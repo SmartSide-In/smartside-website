@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+@theme{
+  --font-header: "Plus Jakarta Sans", serif;
+  --font-primary: "DIN Alternate Bold", serif;
+  --font-secondary: "MrEavesXLModOT-Reg", serif;
+}
+@font-face{
+  font-family: "DIN Alternate Bold";
+  font-size: normal;
+  font-weight:200 700;
+  src:url('src/fonts/DIN Alternate Bold.otf') format('opentype');
+}
+@font-face{
+  font-family: "MrEavesXLModOT-Reg";
+  font-size: normal;
+  src:url('src/fonts/MrEavesXLModOT-Reg.ttf') format('truetype');
+}
