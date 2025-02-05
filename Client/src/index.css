@@ -4,6 +4,8 @@
   --font-header: "Plus Jakarta Sans", serif;
   --font-primary: "DIN Alternate Bold", serif;
   --font-secondary: "MrEavesXLModOT-Reg", serif;
+  --color-primary-btn-color: #FFBB12;
+  --color-primary:#ECECEC;
 }
 @font-face{
   font-family: "DIN Alternate Bold";
