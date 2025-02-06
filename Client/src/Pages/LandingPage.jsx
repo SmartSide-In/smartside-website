@@ -17,6 +17,7 @@ import card5 from '../assets/card-5.png'
 import card6 from '../assets/card-6.png'
 import illu from '../assets/illustration.png'
 import Projects from '../Components/Projects'
+import Faq from '../Components/Faq'
 const LandingPage = () => {
   return (
     <>
@@ -188,7 +189,7 @@ const LandingPage = () => {
         <Projects/>
         </div>
       </section>
-      <section id="career" className='w-full h-screen border border-red-500'>
+      <section id="career" className='w-full'>
             <div className='w-[90%] flex justify-between h-[500px] rounded-4xl bg-primary mx-auto px-[10%]'>
               <div className='w-[50%] h-full flex flex-col items-start justify-center'>
                 <h1 className='text-5xl font-primary font-bold mb-10'>Let’s make things happen</h1>
@@ -196,6 +197,10 @@ const LandingPage = () => {
                 <button className='py-5 px-7 rounded-full bg-primary-btn-color font-secondary text-xl'>Get your free proposal</button>
               </div>
               <img src={illu} alt="Img" />
+            </div>
+            <div className='w-[90%] mx-auto my-20 '>
+              <h1 className='text-6xl font-primary font-bold my-20 bg-gradient-to-b from-[#FFBB12] to-[#99700B] bg-clip-text text-transparent mb-20'>FAQ / Ask anything ?</h1>
+              <Faq/>
             </div>
       </section>
       <footer id="contact" className='w-full h-screen border border-red-500'>
