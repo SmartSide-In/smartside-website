@@ -25,13 +25,20 @@ const Navbar = () => {
           <li className="cursor-pointer flex items-center">
             SERVICES <HiChevronDown />
           </li></Link>
-        <li className="cursor-pointer flex items-center">
-          PROJECTS <HiChevronDown />
-        </li>
-        <li className="cursor-pointer flex items-center">
-          CAREER <HiChevronDown />
-        </li>
-        <li className="cursor-pointer">CONTACT</li>
+        <Link to="project" smooth={true} duration={1000}>
+          <li className="cursor-pointer flex items-center">
+            PROJECTS <HiChevronDown />
+          </li>
+        </Link>
+        <Link to="career" smooth={true} duration={1000}>
+          <li className="cursor-pointer flex items-center">
+            CAREER <HiChevronDown />
+          </li>
+        </Link>
+        <Link to="contact" smooth={true} duration={1000}>
+
+          <li className="cursor-pointer">CONTACT</li>
+        </Link>
       </ul>
 
       {/* CTA Button */}

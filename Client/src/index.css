@@ -18,3 +18,10 @@
   font-size: normal;
   src:url('src/fonts/MrEavesXLModOT-Reg.ttf') format('truetype');
 }
+
+button{
+  cursor: pointer;
+}
+.clip-triangle-right {
+  clip-path: polygon(100% -100%, 100% 100%, 0 100%);
+}

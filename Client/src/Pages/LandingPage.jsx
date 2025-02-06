@@ -9,6 +9,14 @@ import service from '../assets/services.png'
 import banner from '../assets/banner.png'
 import products from '../assets/products.png'
 import InfinityScroll from '../Components/InfinityScroll'
+import card1 from '../assets/card-1.png'
+import card2 from '../assets/card-2.png'
+import card3 from '../assets/card-3.png'
+import card4 from '../assets/card-4.png'
+import card5 from '../assets/card-5.png'
+import card6 from '../assets/card-6.png'
+import illu from '../assets/illustration.png'
+import Projects from '../Components/Projects'
 const LandingPage = () => {
   return (
     <>
@@ -75,13 +83,13 @@ const LandingPage = () => {
       {/* about section starts here */}
       <section
         id="about"
-        className='w-full h-[130vh] border border-green-500 mt-20'
+        className='w-full h-[130vh] mt-20'
       >
-        <div className='w-full h-[80vh] border border-blue-500 flex items-center'>
+        <div className='w-full h-[80vh] flex items-center'>
           <div className='w-[90%] h-full mx-auto flex items-center gap-10'>
             {/* left */}
             <div className='w-[20%] h-full flex items-center flex-col'>
-              <div className="w-[90%] h-[50%] rounded-lg bg-gray-300 relative
+              <div className="w-[90%] h-[50%] rounded-lg bg-gray-200 relative
                               before:absolute before:left-[15px] before:top-[15px] before:-right-[15px] before:-bottom-[15px]
                               before:border before:rounded-lg before:border-primary-btn-color before:content-[''] before:z-10"></div>
               <img src={aboutLogo} alt="Smartside" className='mt-15' />
@@ -92,7 +100,7 @@ const LandingPage = () => {
                 <h1 className='text-7xl font-header font-bold text-white'>5<span>+</span></h1>
                 <div className='font-header text-white font-medium text-lg'>Years Of <br />Experience</div>
               </div>
-              <div className='w-[90%] h-[70%] mt-10 bg-gray-300 rounded-lg'></div>
+              <div className='w-[90%] h-[70%] mt-10 bg-gray-200 rounded-lg'></div>
             </div>
             {/* right */}
             <div className='w-[50%] h-full  ml-20'>
@@ -132,8 +140,8 @@ const LandingPage = () => {
               {/* buttons */}
               <div className='w-full flex items-center justify-start mt-10 py-3 font-secondary'>
                 <button className='flex gap-5 px-8 py-5 rounded-full border border-primary-btn-color items-center'>Know more <HiArrowRight /></button>
-                <div className='w-[60px] h-[60px] rounded-full bg-primary-btn-color mx-10'></div>
-                <div className='flex flex-col font-medium'>
+                <div className='w-[60px] h-[60px] rounded-full bg-primary-btn-color ml-10'></div>
+                <div className='flex flex-col font-medium mx-6'>
                   <p>Need help?</p>
                   <p>(808) 555-0111</p>
                 </div>
@@ -144,17 +152,56 @@ const LandingPage = () => {
         <div className='w-full flex items-center justify-center'>
           <img src={banner} alt="banner" />
         </div>
-        <div className='w-[80%] mt-10 mx-auto border border-red-500'>
+        <div className='w-[80%] mt-10 mx-auto'>
           <InfinityScroll></InfinityScroll>
         </div>
       </section>
       {/* about section ends here */}
 
       {/* services section starts here */}
-      <section className='w-full h-screen border border-red-500' id='service'>
-
+      <section className='w-full pb-20' id='service'>
+        <div className='w-[80%] mx-auto'>
+          <h1 className='text-6xl font-primary font-bold my-20 bg-gradient-to-b from-[#FFBB12] to-[#99700B] bg-clip-text text-transparent'>Our Services</h1>
+          <div className='flex items-center justify-center w-[100%]'>
+            <div className='grid grid-cols-2 gap-20'>
+              <img src={card1} alt="card" />
+              <img src={card2} alt="card" />
+              <img src={card3} alt="card" />
+              <img src={card4} alt="card" />
+              <img src={card5} alt="card" />
+              <img src={card6} alt="card" />
+            </div>
+          </div>
+        </div>
       </section>
       {/* services section ends here */}
+
+      {/* project section starts here */}
+      <section id='project' className='w-full h-screen border border-amber-500'>
+        <div className='w-[80%] mx-30 mt-[3%]'>
+          <h1 className='text-6xl font-primary font-bold bg-transparent bg-clip-text text-transparent bg-gradient-to-b from-[#FFBB12] to-[#99700B]'>
+            Previous Projects
+          </h1>
+        </div>
+        <div className='w-full flex items-center justify-center mt-25'>
+
+        <Projects/>
+        </div>
+      </section>
+      <section id="career" className='w-full h-screen border border-red-500'>
+            <div className='w-[90%] flex justify-between h-[500px] rounded-4xl bg-primary mx-auto px-[10%]'>
+              <div className='w-[50%] h-full flex flex-col items-start justify-center'>
+                <h1 className='text-5xl font-primary font-bold mb-10'>Let’s make things happen</h1>
+                <p className='mb-10 font-secondary text-lg leading-[30px]'>Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.</p>
+                <button className='py-5 px-7 rounded-full bg-primary-btn-color font-secondary text-xl'>Get your free proposal</button>
+              </div>
+              <img src={illu} alt="Img" />
+            </div>
+      </section>
+      <footer id="contact" className='w-full h-screen border border-red-500'>
+
+      </footer>
+      {/* project section ends here */}
     </>
   )
 }
