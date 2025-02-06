@@ -177,7 +177,7 @@ const LandingPage = () => {
       {/* services section ends here */}
 
       {/* project section starts here */}
-      <section id='project' className='w-full h-screen border border-amber-500'>
+      <section id='project' className='w-full h-screen'>
         <div className='w-[80%] mx-30 mt-[3%]'>
           <h1 className='text-6xl font-primary font-bold bg-transparent bg-clip-text text-transparent bg-gradient-to-b from-[#FFBB12] to-[#99700B]'>
             Previous Projects

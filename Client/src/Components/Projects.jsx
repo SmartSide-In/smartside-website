@@ -3,23 +3,21 @@ import { HiArrowRight, HiArrowLeft } from 'react-icons/hi';
 import icon from '../assets/icon.png';
 import {motion} from 'framer-motion';
 const Projects = () => {
-    // State to track which div is open (0-4 corresponds to the 5 divs)
+    
     const [openIndex, setOpenIndex] = useState(0);
 
     const moveForward = () => {
-        // Increment the index, looping back to 0 if it exceeds 4
         setOpenIndex((prevIndex) => (prevIndex + 1) % 5);
     };
 
     const moveBackward = () => {
-        // Decrement the index, looping back to 4 if it goes below 0
         setOpenIndex((prevIndex) => (prevIndex - 1 + 5) % 5);
     };
 
-    // Handle the toggling of the divs
+
     const handleDivClick = (index) => {
         if (openIndex !== index) {
-            setOpenIndex(index); // If the same div is clicked, close it
+            setOpenIndex(index); 
         }
     };
 
@@ -27,7 +25,7 @@ const Projects = () => {
         <div className='w-[90%] relative rounded-[30px] bg-primary-btn-color h-[70vh] overflow-hidden z-10'>
             <div className='w-3/4 h-full bg-black absolute top-0 right-0 clip-triangle-right -z-10'></div>
 
-            <div className='mt-10 w-[80%] mx-auto x-50 border border-red-500 h-[25%] relative'>
+            <div className='mt-10 w-[80%] mx-auto x-50 h-[25%] relative'>
                 <p className='flex items-center gap-2 font-primary font-bold'>
                     <img src={icon} alt="icon" />
                     OUR PROJECTS
@@ -51,8 +49,7 @@ const Projects = () => {
                 </div>
             </div>
 
-            <div className='mt-10 w-[80%] mx-auto x-50 border border-red-500 h-[55%] flex items-center px-5 justify-evenly'>
-                {/* Div 1 */}
+            <div className='mt-10 w-[80%] mx-auto x-50 h-[55%] flex items-center px-5 justify-evenly'>
                 <div
                     className={`w-[${openIndex === 0 ? '30' : '14'}%] h-[90%] rounded-lg bg-primary relative cursor-pointer transition-all duration-500`}
                     onClick={() => handleDivClick(0)}
@@ -73,7 +70,6 @@ const Projects = () => {
                     )
 
                     }
-                    {/* You can add content here */}
                 </div>
 
                 {/* Div 2 */}
@@ -97,10 +93,8 @@ const Projects = () => {
                     )
 
                     }
-                    {/* You can add content here */}
                 </div>
 
-                {/* Div 3 */}
                 <div
                     className={`w-[${openIndex === 2 ? '30' : '14'}%] h-[90%] rounded-lg bg-primary relative cursor-pointer transition-all duration-500`}
                     onClick={() => handleDivClick(2)}
@@ -121,10 +115,8 @@ const Projects = () => {
                     )
 
                     }
-                    {/* You can add content here */}
                 </div>
 
-                {/* Div 4 */}
                 <div
                     className={`w-[${openIndex === 3 ? '30' : '14'}%] h-[90%] rounded-lg bg-primary relative cursor-pointer transition-all duration-500`}
                     onClick={() => handleDivClick(3)}
@@ -145,10 +137,8 @@ const Projects = () => {
                     )
 
                     }
-                    {/* You can add content here */}
                 </div>
 
-                {/* Div 5 */}
                 <div
                     className={`w-[${openIndex === 4 ? '30' : '14'}%] h-[90%] rounded-lg bg-primary relative cursor-pointer transition-all duration-500`}
                     onClick={() => handleDivClick(4)}
@@ -169,7 +159,6 @@ const Projects = () => {
                     )
 
                     }
-                    {/* You can add content here */}
                 </div>
             </div>
         </div>
