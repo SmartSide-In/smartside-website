@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Navbar from '../Components/Navbar'
 import { HiArrowRight, HiCheck } from 'react-icons/hi'
 import { motion } from 'framer-motion'
@@ -18,10 +18,16 @@ import card6 from '../assets/card-6.png'
 import illu from '../assets/illustration.png'
 import Projects from '../Components/Projects'
 import Faq from '../Components/Faq'
+import whiteLogo from '../assets/Primary2Trans.png'
+import facebook from '../assets/facebook.png'
+import linkedin from '../assets/linkedin.png'
+import twitter from '../assets/twitter.png'
+import GotoTop from '../Components/GotoTop'
 const LandingPage = () => {
+  const [visible, setVisible] = useState(false);
   return (
     <>
-
+      <GotoTop visible={visible} setVisible={setVisible} />
       {/* home section starts here */}
       <section className='w-full flex flex-col items-center'>
         <Navbar />
@@ -186,25 +192,58 @@ const LandingPage = () => {
         </div>
         <div className='w-full flex items-center justify-center mt-25'>
 
-        <Projects/>
+          <Projects />
         </div>
       </section>
       <section id="career" className='w-full'>
-            <div className='w-[90%] flex justify-between h-[500px] rounded-4xl bg-primary mx-auto px-[10%]'>
-              <div className='w-[50%] h-full flex flex-col items-start justify-center'>
-                <h1 className='text-5xl font-primary font-bold mb-10'>Let’s make things happen</h1>
-                <p className='mb-10 font-secondary text-lg leading-[30px]'>Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.</p>
-                <button className='py-5 px-7 rounded-full bg-primary-btn-color font-secondary text-xl'>Get your free proposal</button>
-              </div>
-              <img src={illu} alt="Img" />
-            </div>
-            <div className='w-[90%] mx-auto my-20 '>
-              <h1 className='text-6xl font-primary font-bold my-20 bg-gradient-to-b from-[#FFBB12] to-[#99700B] bg-clip-text text-transparent mb-20'>FAQ / Ask anything ?</h1>
-              <Faq/>
-            </div>
+        <div className='w-[90%] flex justify-between h-[500px] rounded-4xl bg-primary mx-auto px-[10%]'>
+          <div className='w-[50%] h-full flex flex-col items-start justify-center'>
+            <h1 className='text-5xl font-primary font-bold mb-10'>Let’s make things happen</h1>
+            <p className='mb-10 font-secondary text-lg leading-[30px]'>Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.</p>
+            <button className='py-5 px-7 rounded-full bg-primary-btn-color font-secondary text-xl'>Get your free proposal</button>
+          </div>
+          <img src={illu} alt="Img" />
+        </div>
+        <div className='w-[90%] mx-auto my-20 '>
+          <h1 className='text-6xl font-primary font-bold my-20 bg-gradient-to-b from-[#FFBB12] to-[#99700B] bg-clip-text text-transparent mb-20'>FAQ / Ask anything ?</h1>
+          <Faq />
+        </div>
       </section>
-      <footer id="contact" className='w-full h-screen border border-red-500'>
-
+      <footer id="contact" className='w-full h-[80vh] overflow-hidden'>
+        <div className='w-[80%] border border-black mx-auto'></div>
+        <div className='w-[80%] mx-auto mt-[8%] h-[90%] border border-blue-900 rounded-[60px] px-[60px] bg-[#191A23]'>
+          <div className='flex items-center justify-between mt-10'>
+            <img src={whiteLogo} alt="Smartside" />
+            <ul className='flex items-center gap-[50px] text-lg text-white font-normal font-number'>
+              <li className='underline cursor-pointer'>About us</li>
+              <li className='underline cursor-pointer'>Services</li>
+              <li className='underline cursor-pointer'>Projects</li>
+              <li className='underline cursor-pointer'>Career</li>
+              <li className='underline cursor-pointer'>Pricing</li>
+            </ul>
+            <div className='flex items-center gap-5'>
+              <img src={linkedin} alt="Linked in" className='cursor-pointer'/>
+              <img src={facebook} alt="Facebook" className='cursor-pointer'/>
+              <img src={twitter} alt="Twitter" className='cursor-pointer'/>
+            </div>
+          </div>
+          <div className='flex items-center justify-between mt-20 pb-20 border-b border-white '>
+            <div className='w-[30%] h-[250px] flex flex-col gap-y-7 px-5'>
+              <p className='w-28 font-number font-semibold bg-primary-btn-color px-2 py-1 rounded-lg'>Contact us:</p>
+              <p className='font-number text-white'>Email: info@positivus.com</p>
+              <p className='font-number text-white'>Phone: 555-567-8901</p>
+              <p className='font-number text-white'>Address: 1234 Main St
+              Moonstone City, Stardust State 12345</p>
+            </div>
+            <div className='w-[60%] h-[250px]  flex items-center justify-end'>
+              <div className='w-[90%] h-[90%] rounded-2xl bg-[#292A32] flex items-center justify-center gap-10'>
+                <input type="text" className='w-[40%] py-6 px-5 rounded-xl border border-white text-white text-xl font-number' placeholder='Email'/>
+                <button className='w-[40%] py-6 px-5 rounded-xl bg-primary-btn-color text-xl font-semibold font-number'>Subscribe to news</button>
+              </div>
+            </div>
+          </div>
+          <p className='mt-10 text-white font-number'>© 2023 Smartside. All Rights Reserved. <span className='underline mx-10'>Privacy Policy</span></p>
+        </div>
       </footer>
       {/* project section ends here */}
     </>

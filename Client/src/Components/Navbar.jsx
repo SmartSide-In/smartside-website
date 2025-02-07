@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-scroll"; // Import Link from react-scroll
+import { Link } from "react-router-dom"; // Import Link from react-scroll
 import { HiChevronDown, HiArrowRight } from "react-icons/hi";
 import { motion } from "framer-motion";
 import Logo from "../assets/logo.png";
@@ -15,27 +15,27 @@ const Navbar = () => {
 
       <ul className="hidden md:flex gap-6 font-bold">
         <li className="cursor-pointer">HOME</li>
-        <Link to="about" smooth={true} duration={1000}>
+        <Link to="about">
           <li className="cursor-pointer flex items-center">
             ABOUT US
             <HiChevronDown />
           </li>
         </Link>
-        <Link to="service" smooth={true} duration={1000}>
+        <Link to="service">
           <li className="cursor-pointer flex items-center">
             SERVICES <HiChevronDown />
           </li></Link>
-        <Link to="project" smooth={true} duration={1000}>
+        <Link to="project">
           <li className="cursor-pointer flex items-center">
             PROJECTS <HiChevronDown />
           </li>
         </Link>
-        <Link to="career" smooth={true} duration={1000}>
+        <Link to="career">
           <li className="cursor-pointer flex items-center">
             CAREER <HiChevronDown />
           </li>
         </Link>
-        <Link to="contact" smooth={true} duration={1000}>
+        <Link to="contact">
 
           <li className="cursor-pointer">CONTACT</li>
         </Link>
