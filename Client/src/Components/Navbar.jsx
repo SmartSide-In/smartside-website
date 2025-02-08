@@ -14,29 +14,30 @@ const Navbar = () => {
       <img src={Logo} alt="SmartSide" className="h-12 w-auto" />
 
       <ul className="hidden md:flex gap-6 font-bold">
+        <Link to='/'>
         <li className="cursor-pointer">HOME</li>
-        <Link to="about">
+        </Link>
+        <Link to="/about">
           <li className="cursor-pointer flex items-center">
             ABOUT US
             <HiChevronDown />
           </li>
         </Link>
-        <Link to="service">
+        <Link to="/services">
           <li className="cursor-pointer flex items-center">
             SERVICES <HiChevronDown />
           </li></Link>
-        <Link to="project">
+        <Link to="/projects">
           <li className="cursor-pointer flex items-center">
             PROJECTS <HiChevronDown />
           </li>
         </Link>
-        <Link to="career">
+        <Link to="/career">
           <li className="cursor-pointer flex items-center">
             CAREER <HiChevronDown />
           </li>
         </Link>
-        <Link to="contact">
-
+        <Link to="/contact">
           <li className="cursor-pointer">CONTACT</li>
         </Link>
       </ul>

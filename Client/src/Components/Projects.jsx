@@ -30,7 +30,7 @@ const Projects = () => {
                 className={`h-[90%] rounded-lg bg-primary relative cursor-pointer transition-all duration-500`}
                 onClick={() => handleDivClick(index)}
             >
-                <div className='absolute top-3 right-3 h-[50px] w-[50px] rounded-full border border-black'></div>
+                <div className='absolute top-3 right-3 h-[50px] w-[50px] rounded-full border border-black flex justify-center items-center font-number font-bold'>{index+1}</div>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, scale: 0 }}
