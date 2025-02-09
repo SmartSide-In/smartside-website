@@ -27,14 +27,14 @@ const Projects = () => {
         return (
             <div
                 style={{ width }}
-                className={`h-[90%] rounded-lg bg-primary relative cursor-pointer transition-all duration-500`}
+                className={`h-[90%] rounded-lg bg-primary relative cursor-pointer transition-all duration-800 ease-in-out`}
                 onClick={() => handleDivClick(index)}
             >
                 <div className='absolute top-3 right-3 h-[50px] w-[50px] rounded-full border border-black flex justify-center items-center font-number font-bold'>{index+1}</div>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, scale: 0.9 ,width:"50%" }}
+                        animate={{ opacity: 1, scale: 1 , width:"100%" }}
                         transition={{ duration: 0.5, delay: 0.2, ease: "easeInOut" }}
                         className='w-full h-full flex items-end justify-center py-3'
                     >

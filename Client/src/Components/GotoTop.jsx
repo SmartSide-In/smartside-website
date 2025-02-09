@@ -20,7 +20,7 @@ const GotoTop = ({ visible, setVisible }) => {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-15 right-15 p-3 bg-primary-btn-color text-white rounded-full shadow-lg transition-opacity duration-300 ${
+      className={`fixed bottom-15 right-15 p-3 bg-primary-btn-color z-100 text-white rounded-full shadow-lg transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Navbar from '../Components/Navbar'
 import { HiArrowRight, HiCheck } from 'react-icons/hi'
 import { motion } from 'framer-motion'
@@ -21,7 +21,51 @@ import Faq from '../Components/Faq'
 import GotoTop from '../Components/GotoTop'
 import Footer from '../Components/Footer'
 const LandingPage = () => {
+  const [count, setCount] = useState(0);
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+
+  useEffect(() => {
+    if (isVisible) {
+      let current = 1;
+      const interval = setInterval(() => {
+        if (current < 5) {
+          setCount((prev) => prev + 1);
+          current++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 100); 
+    } else {
+      setCount(1); 
+    }
+  }, [isVisible]);
+
+
   return (
     <>
       <GotoTop visible={visible} setVisible={setVisible} />
@@ -99,9 +143,13 @@ const LandingPage = () => {
               <img src={aboutLogo} alt="Smartside" className='mt-15' />
             </div>
             {/* middle */}
-            <div className='w-[20%] h-full flex flex-col'>
+            <div ref={sectionRef} className='w-[20%] h-full flex flex-col'>
               <div className='w-[90%] bg-primary-btn-color h-[20%] rounded-lg flex items-center justify-center gap-8'>
-                <h1 className='text-7xl font-header font-bold text-white'>5<span>+</span></h1>
+                <motion.h1 
+                initial={{ opacity: 0, y:20 }}
+                animate={{ opacity: 1, y:0 }}
+                transition={{ duration: 0.5 }}
+                className='text-7xl font-header font-bold text-white'>{count}<span>+</span></motion.h1>
                 <div className='font-header text-white font-medium text-lg'>Years Of <br />Experience</div>
               </div>
               <div className='w-[90%] h-[70%] mt-10 bg-gray-200 rounded-lg'></div>
@@ -181,9 +229,9 @@ const LandingPage = () => {
       {/* services section ends here */}
 
       {/* project section starts here */}
-      <section id='project' className='w-full h-screen'>
+      <section id='project' className='w-full h-screen mt-40'>
         <div className='w-[80%] mx-30 mt-[3%]'>
-          <h1 className='text-6xl font-primary font-bold bg-transparent bg-clip-text text-transparent bg-gradient-to-b from-[#FFBB12] to-[#99700B]'>
+          <h1 className='text-6xl font-primary font-bold bg-transparent bg-clip-text text-transparent leading-relaxed bg-gradient-to-b from-[#FFBB12] to-[#99700B]'>
             Previous Projects
           </h1>
         </div>
@@ -202,13 +250,13 @@ const LandingPage = () => {
           <img src={illu} alt="Img" />
         </div>
         <div className='w-[90%] mx-auto my-20 '>
-          <h1 className='text-6xl font-primary font-bold my-20 bg-gradient-to-b from-[#FFBB12] to-[#99700B] bg-clip-text text-transparent mb-20'>FAQ / Ask anything ?</h1>
+          <h1 className='text-6xl font-primary font-bold my-20 bg-gradient-to-b from-[#FFBB12] to-[#99700B] bg-clip-text text-transparent mb-20 leading-relaxed'>FAQ / Ask anything ?</h1>
           <Faq />
         </div>
       </section>
       <footer id="contact" className='w-full h-[80vh] overflow-hidden'>
         <div className='w-[80%] border border-black mx-auto'></div>
-        <Footer/>
+        <Footer />
       </footer>
       {/* project section ends here */}
     </>
