@@ -20,6 +20,7 @@ import Projects from '../Components/Projects'
 import Faq from '../Components/Faq'
 import GotoTop from '../Components/GotoTop'
 import Footer from '../Components/Footer'
+import LearnBox from '../Components/LearnBox'
 const LandingPage = () => {
   const [count, setCount] = useState(0);
   const sectionRef = useRef(null);
@@ -216,12 +217,13 @@ const LandingPage = () => {
           <h1 className='text-6xl font-primary font-bold my-20 bg-gradient-to-b from-[#FFBB12] to-[#99700B] bg-clip-text text-transparent'>Our Services</h1>
           <div className='flex items-center justify-center w-[100%]'>
             <div className='grid grid-cols-2 gap-20'>
-              <img src={card1} alt="card" />
-              <img src={card2} alt="card" />
-              <img src={card3} alt="card" />
-              <img src={card4} alt="card" />
-              <img src={card5} alt="card" />
-              <img src={card6} alt="card" />
+              <LearnBox name={'searchEngine'}/>
+              <LearnBox name={'webDevelopment'}/>
+              <LearnBox name={'socialMedia'}/>
+              <LearnBox name={'emailMarking'}/>
+              <LearnBox name={'content'}/>
+              <LearnBox name={'analytics'}/>
+              
             </div>
           </div>
         </div>
