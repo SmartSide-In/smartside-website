@@ -256,7 +256,7 @@ const LandingPage = () => {
           <Faq />
         </div>
       </section>
-      <footer id="contact" className='w-full h-[80vh] overflow-hidden'>
+      <footer id="contact" className='w-full h-auto overflow-hidden'>
         <div className='w-[80%] border border-black mx-auto'></div>
         <Footer />
       </footer>
