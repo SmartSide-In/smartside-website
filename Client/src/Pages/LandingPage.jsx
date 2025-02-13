@@ -60,9 +60,9 @@ const LandingPage = () => {
         } else {
           clearInterval(interval);
         }
-      }, 100); 
+      }, 100);
     } else {
-      setCount(1); 
+      setCount(1);
     }
   }, [isVisible]);
 
@@ -77,7 +77,9 @@ const LandingPage = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className='relative w-[90%] h-[70vh] mt-20 rounded-3xl bg-primary overflow-hidden z-10'>
+          className='relative w-[90%] h-[70vh] mt-20 rounded-3xl bg-primary overflow-hidden z-10'
+        >
+          {/* First floating image */}
           <motion.img
             initial={{ opacity: 0, x: -100 }}
             animate={[
@@ -86,9 +88,15 @@ const LandingPage = () => {
             ]}
             src={Mobile}
             alt="design"
-            className="z-5 absolute top-8 right-[5%]"
+            className="z-5 absolute 
+            hidden sm:block
+            w-[180px] md:w-[220px] lg:w-[280px]
+            top-8 md:top-12 lg:top-8
+            right-[5%] md:right-[2%] lg:right-[5%]
+            object-contain"
           />
 
+          {/* Second floating image */}
           <motion.img
             initial={{ opacity: 0, x: 100 }}
             animate={[
@@ -97,12 +105,31 @@ const LandingPage = () => {
             ]}
             src={Mobile}
             alt="design"
-            className="z-5 absolute top-15 right-[25%] rotate-[18deg] scale-75 mb-10"
+            className="z-5 absolute 
+            hidden sm:block
+            w-[160px] md:w-[200px] lg:w-[240px]
+            top-25 md:top-25 
+            right-[25%] md:right-[22%] lg:right-[25%]
+            rotate-[18deg] scale-75 mb-10
+            object-contain"
           />
-          <div className='w-[500px] h-[500px] rounded-full bg-primary-btn-color absolute -bottom-[25%] right-[15%] -z-5'></div>
-          <div className='w-[80%] h-full flex flex-col justify-center mx-auto z-50'>
-            <div className='h-full w-[50%] flex flex-col items-center justify-center'>
-              <h1 className="text-7xl font-bold flex flex-col font-primary">
+
+          {/* Background circle */}
+          <div className='w-[300px] md:w-[400px] lg:w-[500px] 
+                      h-[300px] md:h-[400px] lg:h-[500px] 
+                      rounded-full bg-primary-btn-color 
+                      absolute 
+                      -bottom-[25%] 
+                      right-[10%] md:right-[10%] lg:right-[15%] 
+                      -z-5 
+                      sm:block'
+          />
+
+          {/* Content container */}
+          <div className='w-full md:w-[90%] lg:w-[80%] h-full flex flex-col justify-center mx-auto z-50 px-4 md:px-8 lg:px-0'>
+            <div className='h-full w-full md:w-[65%] lg:w-[50%] flex flex-col items-center md:items-start justify-center'>
+              {/* Heading */}
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold flex flex-col font-primary text-center md:text-left">
                 <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#FFBB12] to-[#E6A80D]">
                   Where
                 </span>
@@ -113,117 +140,186 @@ const LandingPage = () => {
                   Smarter.
                 </span>
               </h1>
-              <div className='w-[80%] flex items-center justify-start gap-10 mt-10'>
-                <button className='flex gap-5 items-center py-5 px-8 border border-black cursor-pointer rounded-full font-secondary text-sm'>Request Quote <HiArrowRight /></button>
-                <div className='font-secondary flex items-center gap-2 cursor-pointer'>
-                  <div className="w-[50px] h-[50px] flex items-center justify-center rounded-full bg-gray-300 hover:bg-primary-btn-color">
-                    <div className="w-0 h-0 border-l-[12px] border-t-[6px] border-b-[6px] border-solid border-l-black border-t-transparent border-b-transparent"></div>
+
+              {/* CTA Buttons */}
+              <div className='w-full md:w-[90%] lg:w-[80%] flex flex-col md:flex-row items-center justify-center md:justify-start gap-5 md:gap-6 lg:gap-10 mt-8 md:mt-10'>
+                <button className='flex gap-3 md:gap-4 lg:gap-5 items-center 
+                               py-3 md:py-4 lg:py-5 
+                               px-6 md:px-7 lg:px-8 
+                               border border-black cursor-pointer rounded-full 
+                               font-secondary text-xs md:text-sm 
+                               text-center whitespace-nowrap'>
+                  Request Quote <HiArrowRight />
+                </button>
+                <div className='font-secondary flex items-center gap-2 cursor-pointer text-xs md:text-sm whitespace-nowrap'>
+                  <div className="w-[40px] md:w-[45px] lg:w-[50px] 
+                              h-[40px] md:h-[45px] lg:h-[50px] 
+                              flex items-center justify-center 
+                              rounded-full bg-gray-300 
+                              hover:bg-primary-btn-color 
+                              transition-colors duration-300">
+                    <div className="w-0 h-0 
+                                border-l-[12px] border-t-[6px] border-b-[6px] 
+                                border-solid border-l-black 
+                                border-t-transparent border-b-transparent">
+                    </div>
                   </div>
-                  Watch Our Videos</div>
+                  Watch Our Videos
+                </div>
               </div>
             </div>
           </div>
-
         </motion.div>
       </section>
+
       {/* home section ends here */}
 
 
       {/* about section starts here */}
       <section
         id="about"
-        className='w-full h-[130vh] mt-55'
+        className='w-full min-h-screen lg:h-[130vh] mt-10 md:mt-20 lg:mt-55'
       >
-        <div className='w-full h-[80vh] flex items-center'>
-          <div className='w-[90%] h-full mx-auto flex items-center gap-10'>
+        <div className='w-full min-h-screen lg:h-[80vh] flex items-center py-8 md:py-12 lg:py-0'>
+          <div className='w-[95%] md:w-[90%] h-full mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-10'>
             {/* left */}
-            <div className='w-[20%] h-full flex items-center flex-col'>
-              <div className="w-[90%] h-[50%] rounded-lg bg-gray-200 relative
-                              before:absolute before:left-[15px] before:top-[15px] before:-right-[15px] before:-bottom-[15px]
-                              before:border before:rounded-lg before:border-primary-btn-color before:content-[''] before:z-10"></div>
-              <img src={aboutLogo} alt="Smartside" className='mt-15' />
-            </div>
-            {/* middle */}
-            <div ref={sectionRef} className='w-[20%] h-full flex flex-col'>
-              <div className='w-[90%] bg-primary-btn-color h-[20%] rounded-lg flex items-center justify-center gap-8'>
-                <motion.h1 
-                initial={{ opacity: 0, y:20 }}
-                animate={{ opacity: 1, y:0 }}
-                transition={{ duration: 0.5 }}
-                className='text-7xl font-header font-bold text-white'>{count}<span>+</span></motion.h1>
-                <div className='font-header text-white font-medium text-lg'>Years Of <br />Experience</div>
+            <div className='w-full md:w-[60%] lg:w-[20%] h-full flex items-center flex-col justify-center lg:justify-start gap-8 lg:gap-12'>
+              <div className="w-[80%] md:w-full lg:w-[90%] aspect-square lg:h-[50%] rounded-lg bg-gray-200 relative
+                          before:absolute before:left-[15px] before:top-[15px] before:-right-[15px] before:-bottom-[15px]
+                          before:border before:rounded-lg before:border-primary-btn-color before:content-[''] before:z-10
+                          shadow-md">
               </div>
-              <div className='w-[90%] h-[70%] mt-10 bg-gray-200 rounded-lg'></div>
+              <img
+                src={aboutLogo}
+                alt="Smartside"
+                className='w-[50%] md:w-[40%] lg:w-[85%] object-contain transition-transform hover:scale-105'
+              />
             </div>
+
+            {/* middle */}
+            <div ref={sectionRef} className='w-full md:w-[60%] lg:w-[20%] h-full flex flex-col'>
+              <div className='w-full lg:w-[90%] bg-primary-btn-color h-[120px] lg:h-[20%] rounded-lg flex items-center justify-center gap-8 shadow-md'>
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className='text-5xl md:text-6xl lg:text-7xl font-header font-bold text-white'
+                >
+                  {count}<span>+</span>
+                </motion.h1>
+                <div className='font-header text-white font-medium text-base md:text-lg'>
+                  Years Of <br />Experience
+                </div>
+              </div>
+              <div className='w-full lg:w-[90%] h-[200px] lg:h-[70%] mt-6 lg:mt-10 bg-gray-200 rounded-lg shadow-md'></div>
+            </div>
+
             {/* right */}
-            <div className='w-[50%] h-full  ml-20'>
-              <div className='w-full flex items-center gap-3 '>
-                <img src={icon} alt="icons" />
+            <div className='w-full md:w-[90%] lg:w-[50%] h-full lg:ml-20 px-4 lg:px-0'>
+              <div className='w-full flex items-center gap-3'>
+                <img src={icon} alt="icons" className='w-6 h-6 md:w-auto md:h-auto' />
                 <h6 className='font-header font-medium'>WHY CHOOSE US</h6>
               </div>
-              <div className='font-primary font-bold text-6xl mt-3 leading-[70px]'>
-                Where Innovation Meets Dream Destinations .
+
+              <div className='font-primary font-bold text-4xl md:text-5xl lg:text-6xl mt-3 leading-tight lg:leading-[70px]'>
+                Where Innovation Meets Dream Destinations.
               </div>
-              <div className='mt-5 text-stone-400 leading-[36px] font-secondary w-[90%]'>Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa Et purus duis sollicitudin dignissim habitant. Egestas nulla</div>
+
+              <div className='mt-5 text-stone-400 leading-relaxed lg:leading-[36px] font-secondary w-full lg:w-[90%] text-sm md:text-base'>
+                Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa Et purus duis sollicitudin dignissim habitant. Egestas nulla
+              </div>
 
               {/* box */}
-              <div className='w-full flex items-center justify-between mt-10'>
-                <div className='w-[48%]  border border-gray-400 rounded-xl py-5'>
+              <div className='w-full flex flex-col md:flex-row items-center gap-6 md:justify-between mt-8 lg:mt-10'>
+                <div className='w-full md:w-[48%] border border-gray-400 rounded-xl py-5'>
                   <div className='w-[90%] mx-5 flex items-center gap-5'>
-                    <img src={service} alt="icons" />
-                    <h2 className='font-primary font-bold text-2xl'>Services</h2>
+                    <img src={service} alt="icons" className='w-6 h-6 md:w-auto md:h-auto' />
+                    <h2 className='font-primary font-bold text-xl md:text-2xl'>Services</h2>
                   </div>
                   <ul className='mt-5 w-[90%] ml-5'>
-                    <li className='flex items-center gap-5 leading-[50px] text-lg font-normal font-secondary text-stone-500'><HiCheck color='#FFBB12' />Beyond Border Immigration</li>
-                    <li className='flex items-center gap-5 leading-[50px] text-lg font-normal font-secondary text-stone-500'><HiCheck color='#FFBB12' />Worldwide Visa Assistancen</li>
-                  </ul>
-                </div>
-                <div className='w-[48%]  border border-gray-400 rounded-xl py-5'>
-                  <div className='w-[90%] mx-5 flex items-center gap-5'>
-                    <img src={products} alt="icons" />
-                    <h2 className='font-primary font-bold text-2xl'>Products</h2>
-                  </div>
-                  <ul className='mt-5 w-[90%] ml-5'>
-                    <li className='flex items-center gap-5 leading-[50px] text-lg font-normal font-secondary text-stone-500'><HiCheck color='#FFBB12' />GlobeTrot Visa Services</li>
-                    <li className='flex items-center gap-5 leading-[50px] text-lg font-normal font-secondary text-stone-500'><HiCheck color='#FFBB12' />Infinity Visa Solutions</li>
+                    <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
+                      <HiCheck color='#FFBB12' />Beyond Border Immigration
+                    </li>
+                    <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
+                      <HiCheck color='#FFBB12' />Worldwide Visa Assistance
+                    </li>
                   </ul>
                 </div>
 
+                <div className='w-full md:w-[48%] border border-gray-400 rounded-xl py-5'>
+                  <div className='w-[90%] mx-5 flex items-center gap-5'>
+                    <img src={products} alt="icons" className='w-6 h-6 md:w-auto md:h-auto' />
+                    <h2 className='font-primary font-bold text-xl md:text-2xl'>Products</h2>
+                  </div>
+                  <ul className='mt-5 w-[90%] ml-5'>
+                    <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
+                      <HiCheck color='#FFBB12' />GlobeTrot Visa Services
+                    </li>
+                    <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
+                      <HiCheck color='#FFBB12' />Infinity Visa Solutions
+                    </li>
+                  </ul>
+                </div>
               </div>
+
               {/* buttons */}
-              <div className='w-full flex items-center justify-start mt-10 py-3 font-secondary'>
-                <button className='flex gap-5 px-8 py-5 rounded-full border border-primary-btn-color items-center'>Know more <HiArrowRight /></button>
-                <div className='w-[60px] h-[60px] rounded-full bg-primary-btn-color ml-10'></div>
-                <div className='flex flex-col font-medium mx-6'>
-                  <p>Need help?</p>
-                  <p>(808) 555-0111</p>
+              <div className='w-full flex flex-col md:flex-row items-center gap-6 md:gap-0 md:justify-start mt-8 lg:mt-10 py-3 font-secondary'>
+                <button className='flex gap-3 md:gap-5 px-6 md:px-8 py-4 md:py-5 rounded-full border border-primary-btn-color items-center'>
+                  Know more <HiArrowRight />
+                </button>
+                <div className='flex items-center'>
+                  <div className='w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-full bg-primary-btn-color md:ml-10'></div>
+                  <div className='flex flex-col font-medium mx-4 md:mx-6'>
+                    <p>Need help?</p>
+                    <p>(808) 555-0111</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Banner and Infinity Scroll */}
         <div className='w-full flex items-center justify-center'>
-          <img src={banner} alt="banner" />
+          <div className='w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16'>
+            <img
+              src={banner}
+              alt="banner"
+              className='w-full h-auto rounded-lg shadow-lg object-cover'
+            />
+          </div>
         </div>
-        <div className='w-[80%] mt-10 mx-auto'>
-          <InfinityScroll></InfinityScroll>
+        <div className='w-[95%] md:w-[90%] lg:w-[80%] mt-10 mx-auto'>
+          <InfinityScroll />
         </div>
       </section>
       {/* about section ends here */}
 
       {/* services section starts here */}
-      <section className='w-full pb-20' id='service'>
-        <div className='w-[80%] mx-auto'>
-          <h1 className='text-6xl font-primary font-bold my-20 bg-gradient-to-b from-[#FFBB12] to-[#99700B] bg-clip-text text-transparent'>Our Services</h1>
-          <div className='flex items-center justify-center w-[100%]'>
-            <div className='grid grid-cols-2 gap-20'>
-              <LearnBox name={'searchEngine'}/>
-              <LearnBox name={'webDevelopment'}/>
-              <LearnBox name={'socialMedia'}/>
-              <LearnBox name={'emailMarking'}/>
-              <LearnBox name={'content'}/>
-              <LearnBox name={'analytics'}/>
-              
+      <section
+        className='w-full pb-10 md:pb-16 lg:pb-20 
+                 mt-16 md:mt-[15%] lg:mt-[20%]'
+        id='service'
+      >
+        <div className='w-[90%] md:w-[85%] lg:w-[80%] mx-auto'>
+          <h1 className='text-3xl md:text-5xl lg:text-6xl 
+                      font-primary font-bold 
+                      my-10 md:my-16 lg:my-20 
+                      bg-gradient-to-b from-[#FFBB12] to-[#99700B] 
+                      bg-clip-text text-transparent'>
+            Our Services
+          </h1>
+
+          <div className='flex items-center justify-center w-full'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 
+                         gap-6 sm:gap-8 md:gap-12 lg:gap-20 
+                         w-full'>
+              <LearnBox name={'searchEngine'} />
+              <LearnBox name={'webDevelopment'} />
+              <LearnBox name={'socialMedia'} />
+              <LearnBox name={'emailMarking'} />
+              <LearnBox name={'content'} />
+              <LearnBox name={'analytics'} />
             </div>
           </div>
         </div>
@@ -231,31 +327,43 @@ const LandingPage = () => {
       {/* services section ends here */}
 
       {/* project section starts here */}
-      <section id='project' className='w-full h-screen mt-40'>
-        <div className='w-[80%] mx-30 mt-[3%]'>
-          <h1 className='text-6xl font-primary font-bold bg-transparent bg-clip-text text-transparent leading-relaxed bg-gradient-to-b from-[#FFBB12] to-[#99700B]'>
+      <section id='project' className='w-full min-h-screen mt-20 md:mt-28 lg:mt-40'>
+        <div className='w-[90%] md:w-[85%] lg:w-[80%] mx-auto mt-[3%]'>
+          <h1 className='text-4xl md:text-5xl lg:text-6xl font-primary font-bold bg-transparent bg-clip-text text-transparent leading-relaxed bg-gradient-to-b from-[#FFBB12] to-[#99700B]'>
             Previous Projects
           </h1>
         </div>
-        <div className='w-full flex items-center justify-center mt-25'>
-
+        <div className='w-full flex items-center justify-center mt-10 md:mt-16 lg:mt-25'>
           <Projects />
         </div>
       </section>
-      <section id="career" className='w-full'>
-        <div className='w-[90%] flex justify-between h-[500px] rounded-4xl bg-primary mx-auto px-[10%]'>
-          <div className='w-[50%] h-full flex flex-col items-start justify-center'>
-            <h1 className='text-5xl font-primary font-bold mb-10'>Let’s make things happen</h1>
-            <p className='mb-10 font-secondary text-lg leading-[30px]'>Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.</p>
-            <button className='py-5 px-7 rounded-full bg-primary-btn-color font-secondary text-xl'>Get your free proposal</button>
+
+      {/* career section starts here */}
+      <section id="career" className="w-full mt-30 px-5 md:px-0">
+        <div className="w-[90%] flex flex-col md:flex-row justify-between items-center h-auto md:h-[500px] rounded-4xl bg-primary mx-auto px-5 md:px-[10%] py-10">
+          <div className="w-full md:w-[50%] flex flex-col items-center md:items-start justify-center text-center md:text-left">
+            <h1 className="text-3xl md:text-5xl font-primary font-bold mb-6 md:mb-10">
+              Let’s make things happen
+            </h1>
+            <p className="mb-6 md:mb-10 font-secondary text-lg md:text-xl leading-[28px] md:leading-[30px]">
+              Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.
+            </p>
+            <button className="py-3 md:py-5 px-6 md:px-7 rounded-full bg-primary-btn-color font-secondary text-lg md:text-xl">
+              Get your free proposal
+            </button>
           </div>
-          <img src={illu} alt="Img" />
+          <img src={illu} alt="Illustration" className="max-w-[80%] md:max-w-full w-full md:w-auto mt-8 md:mt-0" />
         </div>
-        <div className='w-[90%] mx-auto my-20 '>
-          <h1 className='text-6xl font-primary font-bold my-20 bg-gradient-to-b from-[#FFBB12] to-[#99700B] bg-clip-text text-transparent mb-20 leading-relaxed'>FAQ / Ask anything ?</h1>
+
+        {/* FAQ Section */}
+        <div className="w-[90%] mx-auto my-10 md:my-20 text-center">
+          <h1 className="text-3xl md:text-6xl font-primary font-bold my-10 md:my-20 bg-gradient-to-b from-[#FFBB12] to-[#99700B] bg-clip-text text-transparent leading-relaxed">
+            FAQ / Ask anything ?
+          </h1>
           <Faq />
         </div>
       </section>
+
       <footer id="contact" className='w-full h-auto overflow-hidden'>
         <div className='w-[80%] border border-black mx-auto'></div>
         <Footer />
