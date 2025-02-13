@@ -9,9 +9,11 @@ import { Link } from "react-router-dom";
 import object from "../assets/OBJECTS.png";
 import { FaCircleCheck } from "react-icons/fa6";
 import Footer from "../Components/Footer";
+
 const About = () => {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [counts, setCounts] = useState({ projects: 0, team: 0, awards: 0, clients: 0 });
   const buttons = [
@@ -148,7 +150,10 @@ const About = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated) {
+          setIsVisible(true);
+          setHasAnimated(true); // Mark animation as triggered
+        }
       },
       { threshold: 0.5 }
     );
@@ -162,45 +167,54 @@ const About = () => {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
+  }, [hasAnimated]); // Add hasAnimated as a dependency
 
   useEffect(() => {
     if (isVisible) {
       const targetValues = { projects: 10, team: 20, awards: 5, clients: 100 };
-      const duration = 2000;
-      const intervalTime = 50;
-      const steps = duration / intervalTime;
+      const duration = 2000; // Animation duration in milliseconds
+      const intervalTime = 50; // Interval time in milliseconds
+      const steps = duration / intervalTime; // Total steps
 
       const incrementCounters = () => {
         setCounts((prevCounts) => ({
-          projects: prevCounts.projects < targetValues.projects ? prevCounts.projects + Math.ceil(targetValues.projects / steps) : targetValues.projects,
-          team: prevCounts.team < targetValues.team ? prevCounts.team + 1 : targetValues.team,
-          awards: prevCounts.awards < targetValues.awards ? prevCounts.awards + Math.ceil(targetValues.awards / steps) : targetValues.awards,
-          clients: prevCounts.clients < targetValues.clients ? prevCounts.clients + 1 : targetValues.clients,
+          projects:
+            prevCounts.projects < targetValues.projects
+              ? prevCounts.projects + Math.ceil(targetValues.projects / steps)
+              : targetValues.projects, // Stop at target value
+          team:
+            prevCounts.team < targetValues.team
+              ? prevCounts.team + Math.ceil(targetValues.team / steps)
+              : targetValues.team, // Stop at target value
+          awards:
+            prevCounts.awards < targetValues.awards
+              ? prevCounts.awards + Math.ceil(targetValues.awards / steps)
+              : targetValues.awards, // Stop at target value
+          clients:
+            prevCounts.clients < targetValues.clients
+              ? prevCounts.clients + Math.ceil(targetValues.clients / steps)
+              : targetValues.clients, // Stop at target value
         }));
       };
 
       const interval = setInterval(incrementCounters, intervalTime);
 
+      // Stop the interval after the duration
       setTimeout(() => clearInterval(interval), duration);
 
       return () => clearInterval(interval);
-    } else {
-      setCounts({ projects: 0, team: 0, awards: 0, clients: 0 });
     }
-  }, [isVisible]);
+  }, [isVisible]); // Trigger animation only when isVisible is true
 
   const [selectedButton, setSelectedButton] = useState("SAT Coaching");
+
   const StatBox = ({ value, suffix, label }) => (
     <div className="flex flex-col items-center">
-      <motion.h1
-        className="text-6xl font-bold text-white"
-        transition={{ duration: 0.5 }}
-      >
+      <motion.h1 className="text-4xl lg:text-6xl font-bold text-white" transition={{ duration: 0.5 }}>
         {value}
         <span>{suffix}</span>
       </motion.h1>
-      <p className="mt-5 text-xl">{label}</p>
+      <p className="mt-5 text-sm lg:text-xl">{label}</p>
     </div>
   );
   return (
@@ -210,27 +224,27 @@ const About = () => {
         <Navbar />
       </div>
       <BoxContainer name={"About Us"} />
-      <div className="w-[90%] mx-auto mt-25 flex justify-between">
+      <div className="w-[90%] mx-auto mt-10 lg:mt-25 flex flex-col lg:flex-row justify-between">
         {/* Main Content */}
-        <div className="w-[70%] p-6 rounded-lg">
-          <h1 className="text-6xl font-bold font-header">{contentData[selectedButton]?.heading}</h1>
-          <p className="mt-9 leading-[35px] font-header text-gray-500 w-[85%]">
+        <div className="w-full lg:w-[70%] p-4 lg:p-6 rounded-lg">
+          <h1 className="text-3xl lg:text-6xl font-bold font-header">{contentData[selectedButton]?.heading}</h1>
+          <p className="mt-5 lg:mt-9 leading-[25px] lg:leading-[35px] font-header text-gray-500 w-full lg:w-[85%]">
             {contentData[selectedButton]?.content}
           </p>
 
           {/* Side Content 1 */}
           {contentData[selectedButton]?.sideHeading1 && (
             <div className="mt-8">
-              <h3 className="text-3xl font-semibold">{contentData[selectedButton]?.sideHeading1}</h3>
-              <p className="mt-3 leading-[35px] font-header text-gray-500 w-[85%]">
+              <h3 className="text-2xl lg:text-3xl font-semibold">{contentData[selectedButton]?.sideHeading1}</h3>
+              <p className="mt-3 leading-[25px] lg:leading-[35px] font-header text-gray-500 w-full lg:w-[85%]">
                 {contentData[selectedButton]?.sideContent1}
               </p>
               {/* List of items if available */}
               {contentData[selectedButton]?.sideItems1 &&
                 contentData[selectedButton].sideItems1.map((item, index) => (
                   <div key={index} className="mt-4 font-header">
-                    <h4 className="text-xl font-semibold text-[#034833]">{item.title}</h4>
-                    <p className="text-gray-500 mt-5 leading-[35px] w-[85%]">{item.content}</p>
+                    <h4 className="text-lg lg:text-xl font-semibold text-[#034833]">{item.title}</h4>
+                    <p className="text-gray-500 mt-3 lg:mt-5 leading-[25px] lg:leading-[35px] w-full lg:w-[85%]">{item.content}</p>
                   </div>
                 ))}
             </div>
@@ -239,13 +253,13 @@ const About = () => {
           {/* Side Content 2 */}
           {contentData[selectedButton]?.sideHeading2 && (
             <div className="mt-8 font-header">
-              <h3 className="text-3xl font-semibold font-header">{contentData[selectedButton]?.sideHeading2}</h3>
+              <h3 className="text-2xl lg:text-3xl font-semibold font-header">{contentData[selectedButton]?.sideHeading2}</h3>
               {/* List of items if available */}
               {contentData[selectedButton]?.sideItems2 &&
                 contentData[selectedButton].sideItems2.map((item, index) => (
-                  <div key={index} className="mt-10">
-                    <h4 className="text-xl font-semibold text-[#034833]">{item.title}</h4>
-                    <p className="text-gray-500 mt-5 leading-[35px] w-[85%]">{item.content}</p>
+                  <div key={index} className="mt-6 lg:mt-10">
+                    <h4 className="text-lg lg:text-xl font-semibold text-[#034833]">{item.title}</h4>
+                    <p className="text-gray-500 mt-3 lg:mt-5 leading-[25px] lg:leading-[35px] w-full lg:w-[85%]">{item.content}</p>
                   </div>
                 ))}
             </div>
@@ -253,7 +267,7 @@ const About = () => {
         </div>
 
         {/* Sidebar with Buttons */}
-        <div className="w-[25%]">
+        <div className="w-full lg:w-[25%] mt-8 lg:mt-0">
           <div className="w-full h-auto bg-[#F1F5EB] rounded-3xl py-5">
             <div className="w-[90%] mx-auto">
               <div className="grid grid-cols-1 gap-4 p-4 mt-5">
@@ -273,31 +287,35 @@ const About = () => {
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
         </div>
       </div>
-      <div ref={sectionRef} className="w-full mt-20 flex justify-center items-center h-screen">
-        <div className="w-[90%] h-[90%] overflow-hidden rounded-3xl flex justify-between">
-          <div className="w-[30%] bg-primary rounded-4xl">
-          </div>
-          <div className="w-[65%] rounded-3xl flex flex-col justify-between">
-            <div className="w-full h-[60%] flex justify-between">
-              <div className="w-[60%] flex flex-col font-header p-15">
-                <img src={aboutBox} alt="world Image" className="w-[100px] h-[100px]" />
-                <h2 className="mt-5 text-3xl font-bold">Who We are ?</h2>
-                <p className="mt-5 text-gray-400 leading-[35px]">Lorem Ipsum is simply dummy text the printing and typese <br /> Lorem Ipsum has been the industry's standard dummy</p>
+
+      {/* Stats Section */}
+      <div ref={sectionRef} className="w-full mt-10 lg:mt-20 flex justify-center items-center h-auto lg:h-screen">
+        <div className="w-[90%] h-auto lg:h-[90%] overflow-hidden rounded-3xl flex flex-col lg:flex-row justify-between">
+          <div className="w-full lg:w-[30%] bg-primary rounded-4xl"></div>
+          <div className="w-full lg:w-[65%] rounded-3xl flex flex-col justify-between mt-8 lg:mt-0">
+            <div className="w-full h-auto lg:h-[60%] flex flex-col lg:flex-row justify-between">
+              <div className="w-full lg:w-[60%] flex flex-col font-header p-4 lg:p-15">
+                <img
+                  src={aboutBox}
+                  alt="world Image"
+                  className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px]"
+                />
+                <h2 className="mt-5 text-2xl lg:text-3xl font-bold">Who We are ?</h2>
+                <p className="mt-5 text-gray-400 leading-[25px] lg:leading-[35px]">Lorem Ipsum is simply dummy text the printing and typese <br /> Lorem Ipsum has been the industry's standard dummy</p>
                 <Link to={'/contact'}>
-                  <button className="flex items-center gap-4 border mt-5 w-[28%] border-gray-300 rounded-full px-4 py-4 text-sm font-semibold">
+                  <button className="flex items-center gap-4 border mt-5 w-full lg:w-[28%] border-gray-300 rounded-full px-4 py-4 text-sm font-semibold">
                     Contact us
                     <HiArrowRight />
                   </button>
                 </Link>
               </div>
-              <div className="w-[35%] rounded-3xl bg-primary"></div>
+              <div className="w-full lg:w-[35%] rounded-3xl bg-primary mt-8 lg:mt-0"></div>
             </div>
-            <div className="w-full font-header text-white flex justify-between h-[30%] rounded-3xl bg-primary-btn-color px-30 py-20">
+            <div className="w-full font-header text-white flex flex-col lg:flex-row justify-between h-auto lg:h-[30%] rounded-3xl bg-primary-btn-color px-4 lg:px-30 py-8 lg:py-20 mt-8 lg:mt-0">
               <StatBox value={counts.projects} suffix="k+" label="Completed Projects" />
               <StatBox value={counts.team} suffix="+" label="Team Members" />
               <StatBox value={counts.awards} suffix="k+" label="Winning Awards" />
@@ -307,50 +325,50 @@ const About = () => {
         </div>
       </div>
 
-      <div className="w-full h-screen">
-        <div className="w-[90%] h-full mx-auto flex justify-between">
-          <div className="w-[40%] flex items-center justify-center">
-            <div className="h-[60%] w-[80%] bg-primary rounded-2xl relative before:absolute before:inset-0 before:border-3 before:rounded-2xl before:border-black before:content-[''] before:scale-[1] before:translate-x-[-45px] before:translate-y-[40px] before:z-10">
-              <div className="absolute -right-10 bottom-10 flex items-center bg-primary-btn-color w-[40%] h-[100px] z-100 rounded-xl px-5 gap-5 font-header">
-                <h1 className="text-5xl font-bold text-white">25</h1>
-                <p className=" text-white">Years Of Experience</p>
+      {/* Why Choose Us Section */}
+      <div className="w-full h-auto lg:h-screen">
+        <div className="w-[90%] h-full mx-auto flex flex-col lg:flex-row justify-between">
+          <div className="w-full lg:w-[40%] hidden md:flex items-center justify-center mt-8 lg:mt-0">
+            <div className="h-[60%] w-full lg:w-[80%] bg-primary rounded-2xl relative before:absolute before:inset-0 before:border-3 before:rounded-2xl before:border-black before:content-[''] before:scale-[1] before:translate-x-[-45px] before:translate-y-[40px] before:z-10">
+              <div className="absolute -right-10 bottom-10 hidden md:flex items-center bg-primary-btn-color w-full lg:w-[40%] h-[100px] z-100 rounded-xl px-5 gap-5 font-header">
+                <h1 className="text-4xl lg:text-5xl font-bold text-white">25</h1>
+                <p className="text-white">Years Of Experience</p>
               </div>
             </div>
           </div>
-          <div className="w-[55%] flex items-center justify-center">
-            <div className="h-[60%] w-[90%] rounded-2xl relative">
+          <div className="w-full lg:w-[55%] flex items-center justify-center mt-8 lg:mt-0">
+            <div className="h-[60%] w-full lg:w-[90%] rounded-2xl relative">
               <div className="flex items-center mt-3 font-header font-semibold gap-3">
                 <p>WHY CHOOSE US</p>
                 <img src={object} alt="Img" />
               </div>
-              <h1 className="text-5xl font-bold font-header mt-5 w-[80%] leading-[70px]">
+              <h1 className="text-3xl lg:text-5xl font-bold font-header mt-5 w-full lg:w-[80%] leading-[50px] lg:leading-[70px]">
                 Experiencing Traditions Cultural Immersion
               </h1>
               <div className="mt-5 font-header">
                 <div className="flex flex-col gap-5">
                   <div className="flex items-center gap-7">
                     <FaCircleCheck size={20} />
-                    <h2 className="text-xl font-semibold">Marketing Services</h2>
+                    <h2 className="text-lg lg:text-xl font-semibold">Marketing Services</h2>
                   </div>
                   <p className="text-gray-400 mx-12">Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa loren ipsum</p>
                 </div>
-                <div></div>
               </div>
               <div className="mt-5 font-header">
                 <div className="flex flex-col gap-5">
                   <div className="flex items-center gap-7">
                     <FaCircleCheck size={20} />
-                    <h2 className="text-xl font-semibold">IT Maintenance</h2>
+                    <h2 className="text-lg lg:text-xl font-semibold">IT Maintenance</h2>
                   </div>
                   <p className="text-gray-400 mx-12">Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa loren ipsum</p>
                 </div>
                 <div className="mt-5 h-[80px] flex items-center">
-                  <button className="flex bg-primary-btn-color py-6 px-8 rounded-full text-sm items-center gap-3 text-white">
-                    Read more 
+                  <button className="flex bg-primary-btn-color py-4 lg:py-6 px-6 lg:px-8 rounded-full text-sm items-center gap-3 text-white">
+                    Read more
                     <HiArrowRight />
                   </button>
 
-                  <div className="w-[70px] ml-8 h-[70px] bg-primary-btn-color rounded-full"></div>
+                  <div className="w-[50px] lg:w-[70px] ml-8 h-[50px] lg:h-[70px] bg-primary-btn-color rounded-full"></div>
                   <div className="font-header ml-4">
                     <p className="text-gray-500">Need help ?</p>
                     <h2 className="font-semibold">(808) 555-0111</h2>
@@ -361,7 +379,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

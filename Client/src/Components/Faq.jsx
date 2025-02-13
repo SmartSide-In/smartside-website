@@ -19,7 +19,7 @@ const Faq = () => {
     };
 
     return (
-        <div className="w-full lg:w-[80%] mx-auto px-4 md:px-6 py-6">
+        <div className="w-full lg:w-[80%] mx-auto px-4 md:px-6 py-6 font-number">
             {faqItems.map((item, index) => (
                 <div
                     key={index}
