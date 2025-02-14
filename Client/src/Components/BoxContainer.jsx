@@ -29,22 +29,22 @@ const BoxContainer = ({ name }) => {
             )}
 
             {name === 'Career' && (
-                <img src={career} alt='Career' className='absolute top-5 right-5 w-24 md:w-48 lg:w-72' />
+                <img src={career} alt='Career' className='hidden md:block absolute top-15 right-15 w-24 md:w-48 lg:w-72' />
             )}
 
             {name === 'Services' && (
                 <>
-                    <img src={service1} alt='Service 1' className='absolute top-10 md:top-20 right-[10%] md:right-[25%] w-20 md:w-40 lg:w-60' />
+                    <img src={service1} alt='Service 1' className='absolute top-20 md:top-[50%] right-[10%] md:right-[25%] w-20 md:w-40 lg:w-60' />
                     <img src={service2} alt='Service 2' className='absolute -top-2 md:-top-5 right-[2%] md:right-[5%] w-24 md:w-48 lg:w-72' />
                 </>
             )}
 
             {name === 'Projects' && (
-                <img src={product} alt='Projects' className='absolute top-5 right-5 w-24 md:w-48 lg:w-72' />
+                <img src={product} alt='Projects' className='absolute top-20 right-20 w-24 md:w-48 lg:w-72' />
             )}
 
             {name === 'Contact' && (
-                <img src={contact} alt='Contact' className='absolute top-5 right-5 w-24 md:w-48 lg:w-72' />
+                <img src={contact} alt='Contact' className='absolute top-12 right-15 w-24 md:w-48 lg:w-72' />
             )}
         </motion.div>
     );
