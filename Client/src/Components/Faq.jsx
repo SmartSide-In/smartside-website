@@ -6,12 +6,15 @@ const Faq = () => {
     const [activeIndex, setActiveIndex] = useState(null);
 
     const faqItems = [
-        { number: "01", question: "Consultation", answer: "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements." },
-        { number: "02", question: "Research and Strategy Development", answer: "We conduct thorough research and develop a tailored strategy to meet your business goals." },
-        { number: "03", question: "Implementation", answer: "We implement the strategies and plans developed during the research phase." },
-        { number: "04", question: "Monitoring and Optimization", answer: "We continuously monitor the performance and optimize the strategies for better results." },
-        { number: "05", question: "Reporting and Communication", answer: "We provide regular reports and maintain clear communication to keep you updated on progress." },
-        { number: "06", question: "Continual Improvement", answer: "We focus on continual improvement to ensure long-term success and growth." },
+        { number: "01", question: "How can SmartSide help my business grow?", answer: " Our expertise in web development, AI, and DevOps ensures that your digital transformation is smooth and impactful." },
+        { number: "02", question: "What industries do you serve?", answer: "We cater to startups, e-commerce, finance, healthcare, and more, offering tailored solutions for diverse business needs." },
+        { number: "03", question: "How do I start a project with SmartSide?", answer: " Simply reach out to us! We’ll schedule a consultation to understand your requirements and build a custom roadmap for success." },
+        { number: "04", question: "What makes SmartSide different from other tech companies?", answer: "We combine cutting-edge technology, personalized solutions, and expert-driven strategies to deliver high-quality web development, AI, cloud computing, and DevOps services." },
+        { number: "05", question: "Do you provide ongoing support and maintenance for applications?", answer: "Yes! We ensure your applications run smoothly with regular updates, performance optimizations, and 24/7 support." },
+        { number: "06", question: "Can SmartSide help with scaling my business?", answer: " Absolutely! Our cloud solutions, AI automation, and DevOps strategies help businesses scale efficiently while maintaining top-notch performance." },
+        { number: "07", question: "How long does it take to develop a website or application?", answer: "Development time varies based on project complexity, but we always strive for fast, efficient delivery without compromising quality." },
+        { number: "08", question: "Is SEO included in your web development services?", answer: "Yes! We optimize all websites for SEO, speed, and user experience to help you rank higher and attract more customers." },
+        { number: "09", question: "How can I get started with SmartSide?", answer: "It’s simple! Contact us today for a free consultation, and let’s build something incredible together!" },
     ];
 
     const toggleFAQ = (index) => {

@@ -5,10 +5,139 @@ import Footer from '../Components/Footer'
 import competative from '../assets/competative.png'
 import GotoTop from '../Components/GotoTop'
 import JobBox from '../Components/JobBox'
+import { Helmet } from "react-helmet";
 
+const CareersSEO = () => {
+  const jobListings = [
+    {
+      "@type": "JobPosting",
+      "title": "Relationship Manager",
+      "employmentType": "FULL_TIME",
+      "description": "Join our team as a Relationship Manager and help shape customer success.",
+      "datePosted": new Date().toISOString(),
+      "validThrough": new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString(),
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": "SmartSide",
+        "sameAs": "[Your-Website-URL]"
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IN"
+        }
+      }
+    },
+    {
+      "@type": "JobPosting",
+      "title": "Risk Analyst",
+      "employmentType": "FULL_TIME",
+      "description": "Join our team as a Risk Analyst to help assess and manage business risks.",
+      "datePosted": new Date().toISOString(),
+      "validThrough": new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString(),
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": "SmartSide",
+        "sameAs": "[Your-Website-URL]"
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IN"
+        }
+      }
+    },
+    {
+      "@type": "JobPosting",
+      "title": "IT Security Specialist",
+      "employmentType": "FULL_TIME",
+      "description": "Join our team as an IT Security Specialist to protect and enhance our digital infrastructure.",
+      "datePosted": new Date().toISOString(),
+      "validThrough": new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString(),
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": "SmartSide",
+        "sameAs": "[Your-Website-URL]"
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IN"
+        }
+      }
+    }
+  ];
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Careers at SmartSide - Join Our Team",
+    "description": "Explore exciting career opportunities at SmartSide. We offer competitive compensation, health benefits, professional development, and work-life balance.",
+    "mainEntity": jobListings
+  };
+
+  return (
+    <Helmet>
+      {/* Primary Meta Tags */}
+      <title>Careers at SmartSide | Join Our Innovative Tech Team</title>
+      <meta 
+        name="title" 
+        content="Careers at SmartSide | Join Our Innovative Tech Team" 
+      />
+      <meta 
+        name="description" 
+        content="Join SmartSide's dynamic team. We offer competitive compensation, health benefits, professional development, and great work-life balance. Explore current openings in tech, development, and analytics."
+      />
+
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={window.location.href} />
+      <meta 
+        property="og:title" 
+        content="Build Your Career at SmartSide | Tech Jobs & Opportunities" 
+      />
+      <meta 
+        property="og:description" 
+        content="Looking for an exciting career in tech? Join SmartSide and work with cutting-edge technologies. Competitive benefits, professional growth, and work-life balance await."
+      />
+      <meta property="og:image" content="[Your-Website-URL]/assets/competative.png" />
+
+      {/* Twitter */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content={window.location.href} />
+      <meta 
+        property="twitter:title" 
+        content="Join SmartSide | Innovation Meets Opportunity" 
+      />
+      <meta 
+        property="twitter:description" 
+        content="Launch your career at SmartSide. We're hiring for various roles including Relationship Manager, Risk Analyst, and IT Security Specialist. Great benefits and growth opportunities!"
+      />
+      <meta property="twitter:image" content="[Your-Website-URL]/assets/competative.png" />
+
+      {/* Additional SEO Meta Tags */}
+      <meta 
+        name="keywords" 
+        content="tech jobs, IT careers, software development jobs, relationship manager, risk analyst, IT security specialist, tech company careers, work benefits, professional development, work-life balance"
+      />
+      <meta name="robots" content="index, follow" />
+      <meta name="language" content="English" />
+      <link rel="canonical" href={window.location.href} />
+
+      {/* Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
+    </Helmet>
+  );
+};
 const Career = () => {
   return (
     <>
+    <CareersSEO />
       <GotoTop />
       <div className='w-full flex items-center justify-center'>
         <Navbar />
@@ -26,10 +155,14 @@ const Career = () => {
         <div className='w-full md:w-[90%] lg:w-[80%] mx-auto mt-10 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-y-25 font-project px-4 md:px-0'>
           {/* Value Cards */}
           {[
-            { title: 'Integrity', text: 'At YourBank, our values form the foundation of our organization and guide our actions. We believe in upholding the highest standards of integrity, delivering exceptional service, and embracing innovation. These values define our culture and shape the way we work together to achieve our goals.' },
-            { title: 'Customer Centricity', text: 'Our customers are at the heart of everything we do. We are dedicated to understanding their needs, providing personalized solutions, and delivering exceptional service that exceeds expectations.' },
-            { title: 'Collaboration', text: 'We foster a collaborative and inclusive work environment, where teamwork and diversity are celebrated. By leveraging the unique strengths and perspectives of our employees, we drive innovation and achieve greater success together.' },
-            { title: 'Innovation', text: 'We embrace change and constantly seek innovative solutions to meet the evolving needs of our customers. We encourage our employees to think creatively, challenge conventions, and explore new ideas to drive the future of banking.' }
+            { title: 'Integrity', text: 'At Smart Side, integrity is at the core of everything we do. We believe in building trust through honesty, accountability, and ethical decision-making. Our team upholds the highest standards of professionalism, ensuring that every project is handled with fairness, transparency, and respect.' },
+            { title: 'Customer Centricity', text: 'From personalized consultations to continuous support, we focus on building strong, long-term relationships with our clients. By listening, adapting, and innovating, we create solutions that not only meet but exceed expectations, helping your business grow and thrive.' },
+            { title: 'Collaboration', text: 'By working closely with clients and partners, we build solutions that are not only impactful but also scalable. Through teamwork and shared vision, we turn challenges into opportunities, delivering results that drive business growth and long-term success.' },
+            { title: 'Innovation', text: 'We foster a culture of continuous learning and experimentation, encouraging our team to push boundaries and develop groundbreaking solutions. By integrating emerging technologies with strategic insights, we help businesses evolve, scale, and stay competitive in a rapidly changing digital world.' },
+            { title: 'Adaptability', text: 'Our team stays ahead by continuously learning, experimenting, and refining our approach. Whether it’s adopting new technologies, optimizing workflows, or responding to market shifts, we remain flexible and resilient—helping businesses stay competitive and future-ready.' },
+            { title: 'Excellence', text: 'Our team continuously refines processes, leverages industry best practices, and embraces innovation to achieve outstanding results. By prioritizing quality, attention to detail, and customer satisfaction, we empower businesses with solutions that drive success and long-term growth.' },
+            { title: 'Trust & Accountability', text: 'By fostering open communication and taking responsibility for every project, we create strong, long-term partnerships with our clients. Whether it’s delivering a project, solving challenges, or providing ongoing support, you can count on us to be dependable, proactive, and results-driven.' },
+            { title: 'Sustainability', text: 'We integrate sustainability into our operations by reducing waste, promoting energy-efficient solutions, and supporting businesses in their journey toward greener practices. By prioritizing long-term responsibility over short-term gains, we strive to build a future where innovation and sustainability go hand in hand.' }
           ].map((value, index) => (
             <div key={index} className='border-l-2 border-primary-btn-color flex flex-col gap-3 md:gap-5 pl-5'>
               <h1 className='font-medium text-2xl md:text-3xl text-[#4C4C4D]'>

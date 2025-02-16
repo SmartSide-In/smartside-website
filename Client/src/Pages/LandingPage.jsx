@@ -9,18 +9,13 @@ import service from '../assets/services.png'
 import banner from '../assets/banner.png'
 import products from '../assets/products.png'
 import InfinityScroll from '../Components/InfinityScroll'
-import card1 from '../assets/card-1.png'
-import card2 from '../assets/card-2.png'
-import card3 from '../assets/card-3.png'
-import card4 from '../assets/card-4.png'
-import card5 from '../assets/card-5.png'
-import card6 from '../assets/card-6.png'
 import illu from '../assets/illustration.png'
 import Projects from '../Components/Projects'
 import Faq from '../Components/Faq'
 import GotoTop from '../Components/GotoTop'
 import Footer from '../Components/Footer'
 import LearnBox from '../Components/LearnBox'
+import { Helmet } from 'react-helmet'
 const LandingPage = () => {
   const [count, setCount] = useState(0);
   const sectionRef = useRef(null);
@@ -69,7 +64,69 @@ const LandingPage = () => {
 
   return (
     <>
-      <GotoTop visible={visible} setVisible={setVisible} />
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>SmartSide - Where Innovation Gets Smarter | Web Development & AI Solutions</title>
+        <meta name="title" content="SmartSide - Where Innovation Gets Smarter | Web Development & AI Solutions" />
+        <meta name="description" content="SmartSide combines innovation and technology to create powerful, future-ready solutions. Expertise in AI development, cloud computing, web development, and DevOps. Transform your business with custom digital solutions." />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://smartside.com/" />
+        <meta property="og:title" content="SmartSide - Where Innovation Gets Smarter | Web Development & AI Solutions" />
+        <meta property="og:description" content="Transform your business with SmartSide's innovative digital solutions. Expertise in AI, cloud computing, web development, and DevOps. Get started today!" />
+        <meta property="og:image" content="/path-to-your-og-image.jpg" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://smartside.com/" />
+        <meta property="twitter:title" content="SmartSide - Where Innovation Gets Smarter | Web Development & AI Solutions" />
+        <meta property="twitter:description" content="Transform your business with SmartSide's innovative digital solutions. Expertise in AI, cloud computing, web development, and DevOps. Get started today!" />
+        <meta property="twitter:image" content="/path-to-your-og-image.jpg" />
+
+        {/* Additional SEO Meta Tags */}
+        <meta name="keywords" content="web development, AI solutions, cloud computing, DevOps, UI/UX design, e-commerce solutions, digital transformation, software development, machine learning, application maintenance" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="author" content="SmartSide" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://smartside.com/" />
+
+        {/* Favicon */}
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        {/* Additional Meta Tags for Better SEO */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="theme-color" content="#FFBB12" />
+        <meta name="msapplication-TileColor" content="#FFBB12" />
+
+        {/* Schema.org markup for Google */}
+        <script type="application/ld+json">
+          {`
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "SmartSide",
+        "url": "https://smartside.com",
+        "logo": "https://smartside.com/logo.png",
+        "description": "SmartSide combines innovation and technology to create powerful, future-ready solutions. Expertise in AI development, cloud computing, web development, and DevOps.",
+        "address": {
+          "@type": "PostalAddress",
+          "telephone": "(808) 555-0111"
+        },
+        "sameAs": [
+          "https://facebook.com/smartside",
+          "https://twitter.com/smartside",
+          "https://linkedin.com/company/smartside"
+        ]
+      }
+    `}
+        </script>
+      </Helmet>
+      <GotoTop />
       {/* home section starts here */}
       <section className='w-full flex flex-col items-center'>
         <Navbar />
@@ -222,11 +279,11 @@ const LandingPage = () => {
               </div>
 
               <div className='font-primary font-bold text-4xl md:text-5xl lg:text-6xl mt-3 leading-tight lg:leading-[70px]'>
-                Where Innovation Meets Dream Destinations.
+                At SmartSide, we don’t just build software we create digital solutions that drive success
               </div>
 
               <div className='mt-5 text-stone-400 leading-relaxed lg:leading-[36px] font-secondary w-full lg:w-[90%] text-sm md:text-base'>
-                Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa Et purus duis sollicitudin dignissim habitant. Egestas nulla
+                At SmartSide, we combine innovation and technology to create powerful, future-ready solutions. Our services range from AI-driven development and cloud computing to web development, application maintenance, and DevOps. We assist businesses in scaling, automating, and thriving. Our expert team ensures seamless execution, robust security, and long-term success. Let us help you turn your vision into reality!
               </div>
 
               {/* box */}
@@ -238,10 +295,10 @@ const LandingPage = () => {
                   </div>
                   <ul className='mt-5 w-[90%] ml-5'>
                     <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
-                      <HiCheck color='#FFBB12' />Beyond Border Immigration
+                      <HiCheck color='#FFBB12' />Expertise That Matters
                     </li>
                     <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
-                      <HiCheck color='#FFBB12' />Worldwide Visa Assistance
+                      <HiCheck color='#FFBB12' />Results That Speak
                     </li>
                   </ul>
                 </div>
@@ -253,10 +310,10 @@ const LandingPage = () => {
                   </div>
                   <ul className='mt-5 w-[90%] ml-5'>
                     <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
-                      <HiCheck color='#FFBB12' />GlobeTrot Visa Services
+                      <HiCheck color='#FFBB12' />Custom & Scalable Solutions
                     </li>
                     <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
-                      <HiCheck color='#FFBB12' />Infinity Visa Solutions
+                      <HiCheck color='#FFBB12' />Innovation at Core
                     </li>
                   </ul>
                 </div>
@@ -314,12 +371,12 @@ const LandingPage = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 
                          gap-6 sm:gap-8 md:gap-12 lg:gap-20 
                          w-full'>
-              <LearnBox name={'searchEngine'} />
-              <LearnBox name={'webDevelopment'} />
-              <LearnBox name={'socialMedia'} />
-              <LearnBox name={'emailMarking'} />
-              <LearnBox name={'content'} />
-              <LearnBox name={'analytics'} />
+              <LearnBox name={'Web Application Development'} />
+              <LearnBox name={'E-Commerce Solutions'} />
+              <LearnBox name={'AI & Machine Learning Integration'} />
+              <LearnBox name={'DevOps & Automation'} />
+              <LearnBox name={'Cloud Computing Solutions'} />
+              <LearnBox name={'UI/UX Design'} />
             </div>
           </div>
         </div>
@@ -345,9 +402,16 @@ const LandingPage = () => {
             <h1 className="text-3xl md:text-5xl font-primary font-bold mb-6 md:mb-10">
               Let’s make things happen
             </h1>
-            <p className="mb-6 md:mb-10 font-secondary text-lg md:text-xl leading-[28px] md:leading-[30px]">
-              Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.
+            <p className="mb-6 md:mb-7 font-secondary text-lg md:text-xl leading-[28px] md:leading-[30px]">
+              Your vision, our expertise—SmartSide turns ideas into reality with innovative web development, AI-driven solutions, cloud computing, and seamless application maintenance.
             </p>
+            <p className="font-secondary text-lg md:text-xl leading-[28px]">
+              Let’s create something extraordinary!
+            </p>
+            <p className="mb-3 md:mb-2 font-secondary text-lg md:text-xl leading-[28px]">
+              Contact us today and let’s build something amazing together!
+            </p>
+
             <button className="py-3 md:py-5 px-6 md:px-7 rounded-full bg-primary-btn-color font-secondary text-lg md:text-xl">
               Get your free proposal
             </button>

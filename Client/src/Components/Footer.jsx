@@ -12,6 +12,7 @@ const Footer = () => {
             <div className='flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8'>
                 <img src={whiteLogo} alt="Smartside" className='w-[120px] md:w-[150px]' />
                 <ul className='flex flex-wrap justify-center gap-4 md:gap-10 text-sm md:text-lg text-white font-normal font-number'>
+                    <Link to={'/'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Home</li></Link>
                     <Link to={'/about'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>About us</li></Link>
                     <Link to={'/services'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Services</li></Link>
                     <Link to={'/projects'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Projects</li></Link>
@@ -19,7 +20,7 @@ const Footer = () => {
                     <Link to={'/contact'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Contact</li></Link>
                 </ul>
                 <div className='flex items-center gap-4 md:gap-5'>
-                    <img src={linkedin} alt="LinkedIn" className='w-6 md:w-auto cursor-pointer hover:opacity-80 transition-all' />
+                    <img src={linkedin} alt="LinkedIn" className='w-6 md:w-auto cursor-pointer hover:opacity-80 transition-all' onClick={() => window.open('https://www.linkedin.com/company/smart-side-dev','_blank')}/>
                     <img src={facebook} alt="Facebook" className='w-6 md:w-auto cursor-pointer hover:opacity-80 transition-all' />
                     <img src={twitter} alt="Twitter" className='w-6 md:w-auto cursor-pointer hover:opacity-80 transition-all' />
                 </div>
@@ -30,9 +31,9 @@ const Footer = () => {
                 {/* Contact Info */}
                 <div className='w-full md:w-[35%] flex flex-col gap-4 px-4 md:px-5'>
                     <p className='w-28 font-number font-semibold bg-primary-btn-color px-2 py-1 rounded-lg'>Contact us:</p>
-                    <p className='font-number text-white text-sm md:text-base'>Email: info@positivus.com</p>
-                    <p className='font-number text-white text-sm md:text-base'>Phone: 555-567-8901</p>
-                    <p className='font-number text-white text-sm md:text-base'>Address: 1234 Main St, Moonstone City, Stardust State 12345</p>
+                    <p className='font-number text-white text-sm md:text-base'>Email: team@smartside.in</p>
+                    <p className='font-number text-white text-sm md:text-base'>Phone: +91 9361327770</p>
+                    {/* <p className='font-number text-white text-sm md:text-base'>Address: 1234 Main St, Moonstone City, Stardust State 12345</p> */}
                 </div>
 
                 {/* Subscription Form */}
