@@ -9,10 +9,12 @@ import { RiSendPlaneFill } from 'react-icons/ri';
 import { FaCheck } from 'react-icons/fa6';
 import icon from '../assets/icon.png';
 import Footer from '../Components/Footer';
-
+import GotoTop from '../Components/GotoTop';
+import { motion } from 'framer-motion';
 const Contact = () => {
   return (
     <>
+    <GotoTop/>
       {/* SEO Section */}
       <Helmet>
         <title>Contact Us | SmartSide</title>
@@ -50,7 +52,11 @@ const Contact = () => {
       <BoxContainer name={'Contact'} />
 
       {/* Contact Info Section */}
-      <div className="mt-8 md:mt-30 w-[95%] md:w-[90%] lg:w-[80%] mx-auto flex flex-col md:flex-row gap-8 md:gap-0">
+      <motion.div 
+      initial={{ opacity: 0, y:100 }}
+      animate={{ opacity: 1, y:0 }}
+      transition={{ duration: 0.5, delay:0.5 }}
+      className="mt-8 md:mt-30 w-[95%] md:w-[90%] lg:w-[80%] mx-auto flex flex-col md:flex-row gap-8 md:gap-0">
         {/* Contact Details */}
         <div className="w-full md:w-[30%]">
           <div className="flex items-center gap-5">
@@ -98,7 +104,7 @@ const Contact = () => {
         <div className="w-full md:w-[40%] h-48 md:h-auto">
           <div className="w-[90%] md:w-[80%] h-full md:h-[90%] rounded-xl bg-primary mx-auto"></div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Application Section */}
       <div className="mt-8 md:mt-30 w-[95%] md:w-[90%] lg:w-[70%] min-h-screen md:h-[80vh] mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-0">

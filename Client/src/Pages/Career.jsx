@@ -6,7 +6,7 @@ import competative from '../assets/competative.png'
 import GotoTop from '../Components/GotoTop'
 import JobBox from '../Components/JobBox'
 import { Helmet } from "react-helmet";
-
+import { motion } from 'framer-motion'
 const CareersSEO = () => {
   const jobListings = [
     {
@@ -83,24 +83,24 @@ const CareersSEO = () => {
     <Helmet>
       {/* Primary Meta Tags */}
       <title>Careers at SmartSide | Join Our Innovative Tech Team</title>
-      <meta 
-        name="title" 
-        content="Careers at SmartSide | Join Our Innovative Tech Team" 
+      <meta
+        name="title"
+        content="Careers at SmartSide | Join Our Innovative Tech Team"
       />
-      <meta 
-        name="description" 
+      <meta
+        name="description"
         content="Join SmartSide's dynamic team. We offer competitive compensation, health benefits, professional development, and great work-life balance. Explore current openings in tech, development, and analytics."
       />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={window.location.href} />
-      <meta 
-        property="og:title" 
-        content="Build Your Career at SmartSide | Tech Jobs & Opportunities" 
+      <meta
+        property="og:title"
+        content="Build Your Career at SmartSide | Tech Jobs & Opportunities"
       />
-      <meta 
-        property="og:description" 
+      <meta
+        property="og:description"
         content="Looking for an exciting career in tech? Join SmartSide and work with cutting-edge technologies. Competitive benefits, professional growth, and work-life balance await."
       />
       <meta property="og:image" content="[Your-Website-URL]/assets/competative.png" />
@@ -108,19 +108,19 @@ const CareersSEO = () => {
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={window.location.href} />
-      <meta 
-        property="twitter:title" 
-        content="Join SmartSide | Innovation Meets Opportunity" 
+      <meta
+        property="twitter:title"
+        content="Join SmartSide | Innovation Meets Opportunity"
       />
-      <meta 
-        property="twitter:description" 
+      <meta
+        property="twitter:description"
         content="Launch your career at SmartSide. We're hiring for various roles including Relationship Manager, Risk Analyst, and IT Security Specialist. Great benefits and growth opportunities!"
       />
       <meta property="twitter:image" content="[Your-Website-URL]/assets/competative.png" />
 
       {/* Additional SEO Meta Tags */}
-      <meta 
-        name="keywords" 
+      <meta
+        name="keywords"
         content="tech jobs, IT careers, software development jobs, relationship manager, risk analyst, IT security specialist, tech company careers, work benefits, professional development, work-life balance"
       />
       <meta name="robots" content="index, follow" />
@@ -137,7 +137,7 @@ const CareersSEO = () => {
 const Career = () => {
   return (
     <>
-    <CareersSEO />
+      <CareersSEO />
       <GotoTop />
       <div className='w-full flex items-center justify-center'>
         <Navbar />
@@ -145,7 +145,11 @@ const Career = () => {
       <BoxContainer name={'Career'} />
 
       {/* Values Section */}
-      <div className='w-full mt-10 md:mt-20 px-4'>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className='w-full mt-10 md:mt-20 px-4' id='values'>
         <div className='w-full md:w-[90%] lg:w-[80%] mx-auto'>
           <h1 className='text-3xl md:text-4xl font-normal font-project'>Our <span className='text-primary-btn-color'>Values</span></h1>
           <p className='mt-3 md:mt-5 font-project font-light w-full md:w-[90%] text-base md:text-lg'>At YourBank, our values form the foundation of our organization and guide our actions. We believe in upholding the highest standards of integrity, delivering exceptional service, and embracing innovation. These values define our culture and shape the way we work together to achieve our goals.</p>
@@ -172,11 +176,11 @@ const Career = () => {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Benefits Section */}
       {/* Benefits Section */}
-      <div className='w-full mt-20 md:mt-30 px-4'>
+      <div className='w-full mt-20 md:mt-30 px-4' id='benefits'>
         {/* Header */}
         <div className='w-full md:w-[90%] lg:w-[80%] mx-auto'>
           <h1 className='text-3xl md:text-4xl font-normal font-project'>
@@ -221,7 +225,7 @@ const Career = () => {
               {/* Top-Right Corner */}
               {/* <div className="hidden md:block absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-gray-300 rounded-tr-4xl bg-white"></div> */}
               {/* Bottom Border */}
-              {/* <div className="hidden md:block absolute bottom-0 right-0 w-[20%] h-[2px] bg-gradient-to-l from-gray-300 to-gray-300"></div> */} 
+              {/* <div className="hidden md:block absolute bottom-0 right-0 w-[20%] h-[2px] bg-gradient-to-l from-gray-300 to-gray-300"></div> */}
 
               <div className="flex w-full gap-3 md:gap-5 items-center">
                 <img src={competative} alt="img" className="w-12 h-12 md:w-16 md:h-16 object-contain" />
@@ -287,7 +291,7 @@ const Career = () => {
       </div>
 
       {/* Job Openings Section */}
-      <div className='mt-20 md:mt-30 w-full md:w-[90%] lg:w-[80%] mx-auto px-4 md:px-6'>
+      <div className='mt-20 md:mt-30 w-full md:w-[90%] lg:w-[80%] mx-auto px-4 md:px-6' id='job'>
         <div className='w-full lg:w-[80%] mx-auto'>
           <h1 className='text-3xl md:text-4xl font-normal font-project text-primary-btn-color'>Job Openings</h1>
           <p className='mt-3 md:mt-5 font-project font-light w-full md:w-[90%] text-base md:text-lg'>Explore exciting job openings at YourBank, where we value talent, innovation, and a passion for customer service. Join our team and be part of shaping a brighter future in the banking industry</p>

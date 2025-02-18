@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import cook from '../assets/cooking.png'
 import Footer from '../Components/Footer'
 import GotoTop from '../Components/GotoTop'
-
+import { motion } from 'framer-motion'
 const Project = () => {
   return (
     <>
@@ -17,14 +17,18 @@ const Project = () => {
       <BoxContainer name={'Projects'} />
 
       {/* Heading Section */}
-      <div className='w-full flex items-center justify-center mt-12 md:mt-20 lg:mt-30 flex-col px-4 text-center'>
+      <motion.div 
+      initial={{ opacity: 0, y:100 }}
+      animate={{ opacity: 1, y:0 }}
+      transition={{ duration: 0.5, delay:0.5 }}
+      className='w-full flex items-center justify-center mt-12 md:mt-20 lg:mt-30 flex-col px-4 text-center'>
         <h1 className='text-3xl md:text-5xl lg:text-6xl font-bold font-primary'>
           Oopps! We are Cooking.
         </h1>
         <h1 className='text-3xl md:text-5xl lg:text-6xl font-bold font-primary mt-2 md:mt-4'>
           See you soon...
         </h1>
-      </div>
+      </motion.div>
 
       {/* Description Text */}
       <div className='w-full flex items-center justify-center mt-8 md:mt-12 lg:mt-15 px-4'>

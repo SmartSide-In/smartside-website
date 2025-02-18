@@ -1,23 +1,125 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 import { HiChevronDown, HiArrowRight, HiMenu, HiX } from "react-icons/hi";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../assets/logo.png";
+import { useNavigate, useLocation } from "react-router-dom";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => {
+    setActiveDropdown(null);
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  const toggleMenu = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
+
+  const handleDropdownClick = useCallback((title, path) => {
+    navigate(path);
+    setActiveDropdown(null);
+  }, [navigate]);
+
+  const handleDropdownHover = useCallback((title) => {
+    setActiveDropdown(title);
+  }, []);
 
   const navItems = [
-    { title: "HOME", path: "/", hasDropdown: false },
-    { title: "ABOUT US", path: "/about", hasDropdown: true },
-    { title: "SERVICES", path: "/services", hasDropdown: true },
-    { title: "PROJECTS", path: "/projects", hasDropdown: true },
-    { title: "CAREER", path: "/career", hasDropdown: true },
-    { title: "CONTACT", path: "/contact", hasDropdown: false },
+    {
+      title: "HOME",
+      path: "/",
+      hasDropdown: false
+    },
+    {
+      title: "ABOUT US",
+      path: "/about",
+      hasDropdown: true,
+      dropdownItems: [
+        { title: "Know us", scrollTo: "aboutsection" },
+        { title: "Why choose SmartSide", scrollTo: "smartside-resources" },
+        { title: "Experience", scrollTo: "Choose" }
+      ]
+    },
+    {
+      title: "SERVICES",
+      path: "/services",
+      hasDropdown: true,
+      dropdownItems: [
+        { title: "Book Consultation", scrollTo: "consultation" },
+        { title: "Our Services", scrollTo: "services" },
+        { title: "Course Plans", scrollTo: "plans" }
+      ]
+    },
+    {
+      title: "PROJECTS",
+      path: "/projects",
+      hasDropdown: true,
+      dropdownItems: [
+        { title: "Recent Projects", scrollTo: "recent-projects" },
+        { title: "Case Studies", scrollTo: "case-studies" },
+        { title: "Gallery", scrollTo: "gallery" }
+      ]
+    },
+    {
+      title: "CAREER",
+      path: "/career",
+      hasDropdown: true,
+      dropdownItems: [
+        { title: "Our Values", scrollTo: "values" },
+        { title: "Our Benefits", scrollTo: "benefits" },
+        { title: "Job Opening", scrollTo: "job" }
+      ]
+    },
+    {
+      title: "CONTACT",
+      path: "/contact",
+      hasDropdown: false
+    }
   ];
+
+  const DropdownMenu = ({ items, isVisible, parentPath }) => (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 0, y: -5 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -5 }}
+          className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50"
+          onMouseLeave={() => setActiveDropdown(null)}
+        >
+          {items.map((item) => (
+            <ScrollLink
+              key={item.scrollTo}
+              to={item.scrollTo}
+              smooth={true}
+              duration={800}
+              spy={true}
+              offset={-50}
+              className="block px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
+              onClick={() => {
+                navigate(parentPath);
+                setActiveDropdown(null);
+                setTimeout(() => {
+                  const element = document.getElementById(item.scrollTo);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }, 100);
+              }}
+            >
+              {item.title}
+            </ScrollLink>
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 
   return (
     <div className="w-full px-4 md:px-8 lg:px-16 bg-white">
@@ -27,23 +129,45 @@ const Navbar = () => {
         className="max-w-7xl mx-auto h-20 flex items-center justify-between rounded-full font-header bg-primary shadow-lg px-4 md:px-6 mt-4"
       >
         {/* Logo */}
-        <Link to="/" className="flex-shrink-0">
+        <RouterLink to="/" className="flex-shrink-0">
           <img src={Logo} alt="Logo" className="h-12 w-auto" />
-        </Link>
+        </RouterLink>
 
         {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center gap-6 font-bold">
           {navItems.map((item) => (
-            <Link to={item.path} key={item.title}>
-              <li className="cursor-pointer flex items-center hover:text-primary-dark transition-colors">
-                {item.title}
-                {item.hasDropdown && <HiChevronDown className="ml-1" />}
-              </li>
-            </Link>
+            <li key={item.title} className="relative nav-dropdown">
+              {item.hasDropdown ? (
+                <div
+                  onMouseEnter={() => handleDropdownHover(item.title)}
+                  className="relative"
+                >
+                  <button
+                    onClick={() => handleDropdownClick(item.title, item.path)}
+                    className="flex items-center hover:text-primary-dark transition-colors"
+                  >
+                    {item.title}
+                    <HiChevronDown className="ml-1" />
+                  </button>
+                  <DropdownMenu
+                    items={item.dropdownItems}
+                    isVisible={activeDropdown === item.title}
+                    parentPath={item.path}
+                  />
+                </div>
+              ) : (
+                <RouterLink
+                  to={item.path}
+                  className="hover:text-primary-dark transition-colors"
+                >
+                  {item.title}
+                </RouterLink>
+              )}
+            </li>
           ))}
         </ul>
 
-        {/* CTA Button - Hidden on mobile */}
+        {/* CTA Button */}
         <button className="hidden lg:flex items-center gap-3 py-3 px-6 rounded-full font-semibold bg-primary-btn-color text-white cursor-pointer hover:bg-primary-dark transition">
           Get an appointment
           <HiArrowRight />
@@ -59,34 +183,83 @@ const Navbar = () => {
       </motion.div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden z-50 rounded-b-lg mb-4"
-        >
-          <ul className="py-4 px-6 space-y-4">
-            {navItems.map((item) => (
-              <Link 
-                to={item.path} 
-                key={item.title}
-                onClick={() => setIsOpen(false)}
-              >
-                <li className="cursor-pointer flex items-center mt-5 justify-between hover:text-primary-dark transition-colors">
-                  {item.title}
-                  {item.hasDropdown && <HiChevronDown />}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-white rounded-b-lg shadow-lg overflow-hidden"
+          >
+            <ul className="py-4 px-6 space-y-4">
+              {navItems.map((item) => (
+                <li key={item.title}>
+                  {item.hasDropdown ? (
+                    <div>
+                      <button
+                        onClick={() => {
+                          if (activeDropdown === item.title) {
+                            setActiveDropdown(null);
+                          } else {
+                            setActiveDropdown(item.title);
+                            navigate(item.path);
+                          }
+                        }}
+                        className="w-full flex items-center justify-between hover:text-primary-dark transition-colors"
+                      >
+                        {item.title}
+                        <HiChevronDown className={`transform transition-transform ${activeDropdown === item.title ? 'rotate-180' : ''
+                          }`} />
+                      </button>
+                      <AnimatePresence>
+                        {activeDropdown === item.title && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="ml-4 mt-2 space-y-2"
+                          >
+                            {item.dropdownItems.map((dropdownItem) => (
+                              <ScrollLink
+                                key={dropdownItem.scrollTo}
+                                to={dropdownItem.scrollTo}
+                                smooth={true}
+                                duration={500}
+                                offset={-80}
+                                className="block py-2 hover:text-primary-dark cursor-pointer"
+                                onClick={() => {
+                                  setIsOpen(false);
+                                  setActiveDropdown(null);
+                                }}
+                              >
+                                {dropdownItem.title}
+                              </ScrollLink>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <RouterLink
+                      to={item.path}
+                      className="block hover:text-primary-dark transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.title}
+                    </RouterLink>
+                  )}
                 </li>
-              </Link>
-            ))}
-            <li>
-              <button className="w-full flex items-center mt-5 justify-center gap-3 py-3 px-6 rounded-full font-semibold bg-primary-btn-color text-white cursor-pointer hover:bg-primary-dark transition">
-                Get an appointment
-                <HiArrowRight />
-              </button>
-            </li>
-          </ul>
-        </motion.div>
-      )}
+              ))}
+              <li>
+                <button className="w-full flex items-center justify-center gap-3 py-3 px-6 rounded-full font-semibold bg-primary-btn-color text-white cursor-pointer hover:bg-primary-dark transition">
+                  Get an appointment
+                  <HiArrowRight />
+                </button>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

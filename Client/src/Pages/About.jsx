@@ -241,9 +241,13 @@ const About = () => {
         <Navbar />
       </div>
       <BoxContainer name={"About Us"} />
-      <div className="w-[90%] mx-auto mt-10 lg:mt-25 flex flex-col lg:flex-row justify-between">
+      <motion.div 
+      initial={{ opacity: 0, y:100 }}
+      animate={{ opacity: 1, y:0 }}
+      transition={{ duration: 0.5, delay: 0.5 }}
+      className="w-[90%] mx-auto mt-10 lg:mt-25 flex flex-col lg:flex-row justify-between">
         {/* Main Content */}
-        <div className="w-full lg:w-[70%] p-4 lg:p-6 rounded-lg">
+        <div className="w-full lg:w-[70%] p-4 lg:p-6 rounded-lg " id="orustory">
           <h1 className="text-3xl lg:text-6xl font-bold font-header">{contentData[selectedButton]?.heading}</h1>
           <p className="mt-5 lg:mt-9 leading-[25px] lg:leading-[35px] font-header text-gray-500 w-full lg:w-[85%]">
             {contentData[selectedButton]?.content}
@@ -284,7 +288,7 @@ const About = () => {
         </div>
 
         {/* Sidebar with Buttons */}
-        <div className="w-full lg:w-[25%] mt-8 lg:mt-0">
+        <div className="w-full lg:w-[25%] mt-8 lg:mt-0" id="aboutsection">
           <div className="w-full h-auto bg-[#F1F5EB] rounded-3xl py-5">
             <div className="w-[90%] mx-auto">
               <div className="grid grid-cols-1 gap-4 p-4 mt-5">
@@ -307,10 +311,10 @@ const About = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Stats Section */}
-      <div ref={sectionRef} className="w-full mt-10 lg:mt-20 flex justify-center items-center h-auto lg:h-screen">
+      <div ref={sectionRef} className="w-full mt-10 lg:mt-20 flex justify-center items-center h-auto lg:h-screen" id="smartside-resources">
         <div className="w-[90%] h-auto lg:h-[90%] overflow-hidden rounded-3xl flex flex-col lg:flex-row justify-between">
           <div className="w-full lg:w-[30%] bg-primary rounded-4xl"></div>
           <div className="w-full lg:w-[65%] rounded-3xl flex flex-col justify-between mt-8 lg:mt-0">
@@ -321,7 +325,7 @@ const About = () => {
                   alt="world Image"
                   className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px]"
                 />
-                <h2 className="mt-5 text-2xl lg:text-3xl font-bold">Who Choose SmartSide?</h2>
+                <h2 className="mt-5 text-2xl lg:text-3xl font-bold">Why Choose SmartSide?</h2>
                 <p className="mt-5 text-gray-400 leading-[25px] lg:leading-[35px]">With a team of experts dedicated to innovation, scalability, and performance, we transform your ideas into highly functional, future-ready solutions. Whether you need a robust website, AI-powered automation, or seamless application support, we make it happen!
                 </p>
                 <Link to={'/contact'}>
@@ -354,7 +358,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-[55%] flex items-center justify-center mt-8 lg:mt-0">
+          <div className="w-full lg:w-[55%] flex items-center justify-center mt-8 lg:mt-0" id="Choose">
             <div className="h-[60%] w-full lg:w-[90%] rounded-2xl relative">
               <div className="flex items-center mt-3 font-header font-semibold gap-3">
                 <p>WHY CHOOSE US</p>
