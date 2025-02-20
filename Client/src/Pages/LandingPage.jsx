@@ -6,7 +6,6 @@ import Mobile from '../assets/Group 36.png'
 import aboutLogo from '../assets/aboutLogo.png'
 import icon from '../assets/icon.png'
 import service from '../assets/services.png'
-import banner from '../assets/banner.png'
 import products from '../assets/products.png'
 import InfinityScroll from '../Components/InfinityScroll'
 import illu from '../assets/illustration.png'
@@ -16,6 +15,7 @@ import GotoTop from '../Components/GotoTop'
 import Footer from '../Components/Footer'
 import LearnBox from '../Components/LearnBox'
 import { Helmet } from 'react-helmet'
+import ReviewBox from '../Components/ReviewBox'
 const LandingPage = () => {
   const [count, setCount] = useState(0);
   const sectionRef = useRef(null);
@@ -148,8 +148,8 @@ const LandingPage = () => {
             className="z-5 absolute 
             hidden sm:block
             w-[180px] md:w-[220px] lg:w-[280px]
-            top-8 md:top-12 lg:top-8
-            right-[5%] md:right-[2%] lg:right-[5%]
+            top-10 md:top-14 lg:top-10
+            right-[6%] md:right-[3%] lg:right-[6%]
             object-contain"
           />
 
@@ -164,7 +164,7 @@ const LandingPage = () => {
             alt="design"
             className="z-5 absolute 
             hidden sm:block
-            w-[160px] md:w-[200px] lg:w-[240px]
+            w-[180px] md:w-[220px] lg:w-[280px]
             top-25 md:top-25 
             right-[25%] md:right-[22%] lg:right-[25%]
             rotate-[18deg] scale-75 mb-10
@@ -235,98 +235,104 @@ const LandingPage = () => {
       {/* about section starts here */}
       <section
         id="about"
-        className='w-full min-h-screen lg:h-[130vh] mt-10 md:mt-20 lg:mt-55'
+        className='w-full py-16 md:py-20 lg:py-28'
       >
-        <div className='w-full min-h-screen lg:h-[80vh] flex items-center py-8 md:py-12 lg:py-0'>
-          <div className='w-[95%] md:w-[90%] h-full mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-10'>
-            {/* left */}
-            <div className='w-full md:w-[60%] lg:w-[20%] h-full flex items-center flex-col justify-center lg:justify-start gap-8 lg:gap-12'>
-              <div className="w-[80%] md:w-full lg:w-[90%] aspect-square lg:h-[50%] rounded-lg bg-gray-200 relative
-                          before:absolute before:left-[15px] before:top-[15px] before:-right-[15px] before:-bottom-[15px]
-                          before:border before:rounded-lg before:border-primary-btn-color before:content-[''] before:z-10
-                          shadow-md">
+        <div className='w-full flex flex-col items-center'>
+          <div className='w-[92%] md:w-[90%] mx-auto flex flex-col lg:flex-row items-start gap-12 lg:gap-16'>
+            {/* Left Column */}
+            <div className='w-full lg:w-[25%] flex flex-col items-center gap-10'>
+              <div className="w-full max-w-[300px] aspect-square rounded-lg bg-gray-200 relative
+                    before:absolute before:left-[15px] before:top-[15px] before:-right-[15px] before:-bottom-[15px]
+                    before:border before:rounded-lg before:border-primary-btn-color before:content-['']
+                    before:z-10 shadow-md">
               </div>
               <img
                 src={aboutLogo}
                 alt="Smartside"
-                className='w-[50%] md:w-[40%] lg:w-[85%] object-contain transition-transform hover:scale-105'
+                className='w-[50%] lg:w-[85%] object-contain transition-transform hover:scale-105 mb-8 lg:mb-0'
               />
             </div>
 
-            {/* middle */}
-            <div ref={sectionRef} className='w-full md:w-[60%] lg:w-[20%] h-full flex flex-col'>
-              <div className='w-full lg:w-[90%] bg-primary-btn-color h-[120px] lg:h-[20%] rounded-lg flex items-center justify-center gap-8 shadow-md'>
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className='text-5xl md:text-6xl lg:text-7xl font-header font-bold text-white'
-                >
-                  {count}<span>+</span>
-                </motion.h1>
-                <div className='font-header text-white font-medium text-base md:text-lg'>
-                  Years Of <br />Experience
+            {/* Middle Column */}
+            <div ref={sectionRef} className='w-full lg:w-[25%] flex flex-col gap-8'>
+              <div className='w-full bg-primary-btn-color rounded-lg p-8 shadow-md'>
+                <div className='flex items-center justify-center gap-5'>
+                  <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className='text-4xl md:text-5xl lg:text-6xl font-header font-bold text-white'
+                  >
+                    {count}<span>+</span>
+                  </motion.h1>
+                  <div className='font-header text-white font-medium text-base md:text-lg'>
+                    Years Of <br />Experience
+                  </div>
                 </div>
               </div>
-              <div className='w-full lg:w-[90%] h-[200px] lg:h-[70%] mt-6 lg:mt-10 bg-gray-200 rounded-lg shadow-md'></div>
+              <div className='w-full aspect-video lg:aspect-[3/4] bg-gray-200 rounded-lg shadow-md'></div>
             </div>
 
-            {/* right */}
-            <div className='w-full md:w-[90%] lg:w-[50%] h-full lg:ml-20 px-4 lg:px-0'>
-              <div className='w-full flex items-center gap-3'>
-                <img src={icon} alt="icons" className='w-6 h-6 md:w-auto md:h-auto' />
+            {/* Right Column */}
+            <div className='w-full lg:w-[50%] lg:pl-12'>
+              <div className='flex items-center gap-4 mb-6'>
+                <img src={icon} alt="icons" className='w-6 h-6 md:w-8 md:h-8' />
                 <h6 className='font-header font-medium'>WHY CHOOSE US</h6>
               </div>
 
-              <div className='font-primary font-bold text-4xl md:text-5xl lg:text-6xl mt-3 leading-tight lg:leading-[70px]'>
-                At SmartSide, we don’t just build software we create digital solutions that drive success
-              </div>
+              <h2 className='font-primary font-bold text-3xl md:text-4xl lg:text-5xl leading-tight lg:leading-[1.2] mb-6'>
+                At SmartSide, we don't just build software we create digital solutions that drive success
+              </h2>
 
-              <div className='mt-5 text-stone-400 leading-relaxed lg:leading-[36px] font-secondary w-full lg:w-[90%] text-sm md:text-base'>
+              <p className='mb-10 text-stone-400 leading-relaxed font-secondary text-base md:text-lg'>
                 At SmartSide, we combine innovation and technology to create powerful, future-ready solutions. Our services range from AI-driven development and cloud computing to web development, application maintenance, and DevOps. We assist businesses in scaling, automating, and thriving. Our expert team ensures seamless execution, robust security, and long-term success. Let us help you turn your vision into reality!
-              </div>
+              </p>
 
-              {/* box */}
-              <div className='w-full flex flex-col md:flex-row items-center gap-6 md:justify-between mt-8 lg:mt-10'>
-                <div className='w-full md:w-[48%] border border-gray-400 rounded-xl py-5'>
-                  <div className='w-[90%] mx-5 flex items-center gap-5'>
-                    <img src={service} alt="icons" className='w-6 h-6 md:w-auto md:h-auto' />
+              {/* Service Boxes */}
+              <div className='grid md:grid-cols-2 gap-8 mb-10'>
+                <div className='w-full border border-gray-400 rounded-xl p-6'>
+                  <div className='flex items-center gap-4 mb-5'>
+                    <img src={service} alt="icons" className='w-6 h-6 md:w-8 md:h-8' />
                     <h2 className='font-primary font-bold text-xl md:text-2xl'>Services</h2>
                   </div>
-                  <ul className='mt-5 w-[90%] ml-5'>
-                    <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
-                      <HiCheck color='#FFBB12' />Expertise That Matters
+                  <ul className='space-y-3'>
+                    <li className='flex items-center gap-3 text-stone-500'>
+                      <HiCheck className="text-primary-btn-color flex-shrink-0" />
+                      <span className='font-secondary'>Expertise That Matters</span>
                     </li>
-                    <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
-                      <HiCheck color='#FFBB12' />Results That Speak
+                    <li className='flex items-center gap-3 text-stone-500'>
+                      <HiCheck className="text-primary-btn-color flex-shrink-0" />
+                      <span className='font-secondary'>Results That Speak</span>
                     </li>
                   </ul>
                 </div>
 
-                <div className='w-full md:w-[48%] border border-gray-400 rounded-xl py-5'>
-                  <div className='w-[90%] mx-5 flex items-center gap-5'>
-                    <img src={products} alt="icons" className='w-6 h-6 md:w-auto md:h-auto' />
+                <div className='w-full border border-gray-400 rounded-xl p-6'>
+                  <div className='flex items-center gap-4 mb-5'>
+                    <img src={products} alt="icons" className='w-6 h-6 md:w-8 md:h-8' />
                     <h2 className='font-primary font-bold text-xl md:text-2xl'>Products</h2>
                   </div>
-                  <ul className='mt-5 w-[90%] ml-5'>
-                    <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
-                      <HiCheck color='#FFBB12' />Custom & Scalable Solutions
+                  <ul className='space-y-3'>
+                    <li className='flex items-center gap-3 text-stone-500'>
+                      <HiCheck className="text-primary-btn-color flex-shrink-0" />
+                      <span className='font-secondary'>Custom & Scalable Solutions</span>
                     </li>
-                    <li className='flex items-center gap-3 md:gap-5 leading-[40px] md:leading-[50px] text-base md:text-lg font-normal font-secondary text-stone-500'>
-                      <HiCheck color='#FFBB12' />Innovation at Core
+                    <li className='flex items-center gap-3 text-stone-500'>
+                      <HiCheck className="text-primary-btn-color flex-shrink-0" />
+                      <span className='font-secondary'>Innovation at Core</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              {/* buttons */}
-              <div className='w-full flex flex-col md:flex-row items-center gap-6 md:gap-0 md:justify-start mt-8 lg:mt-10 py-3 font-secondary'>
-                <button className='flex gap-3 md:gap-5 px-6 md:px-8 py-4 md:py-5 rounded-full border border-primary-btn-color items-center'>
+              {/* CTA Section */}
+              <div className='flex flex-col md:flex-row items-center gap-8 py-4'>
+                <button className='w-full md:w-auto flex justify-center gap-3 px-8 py-4 rounded-full border border-primary-btn-color items-center'>
                   Know more <HiArrowRight />
                 </button>
                 <div className='flex items-center'>
-                  <div className='w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-full bg-primary-btn-color md:ml-10'></div>
-                  <div className='flex flex-col font-medium mx-4 md:mx-6'>
+                  <div className='w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary-btn-color'></div>
+                  <div className='flex flex-col font-medium ml-5'>
                     <p>Need help?</p>
                     <p>(808) 555-0111</p>
                   </div>
@@ -334,28 +340,21 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Banner and Infinity Scroll */}
-        <div className='w-full flex items-center justify-center'>
-          <div className='w-full max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16'>
-            <img
-              src={banner}
-              alt="banner"
-              className='w-full h-auto rounded-lg shadow-lg object-cover'
-            />
+          {/* Review Box and Infinity Scroll */}
+          <div className='w-[92%] md:w-[90%] mx-auto mt-20'>
+            <ReviewBox />
+            <div className='mt-12'>
+              <InfinityScroll />
+            </div>
           </div>
-        </div>
-        <div className='w-[95%] md:w-[90%] lg:w-[80%] mt-10 mx-auto'>
-          <InfinityScroll />
         </div>
       </section>
       {/* about section ends here */}
 
       {/* services section starts here */}
       <section
-        className='w-full pb-10 md:pb-16 lg:pb-20 
-                 mt-16 md:mt-[15%] lg:mt-[20%]'
+        className='w-full pb-10 md:pb-16 lg:pb-20 '
         id='service'
       >
         <div className='w-[90%] md:w-[85%] lg:w-[80%] mx-auto'>

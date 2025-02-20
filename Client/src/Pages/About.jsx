@@ -142,22 +142,40 @@ const About = () => {
       ]
     },
 
-    "Application Maintenance & DevOps": {
-      heading: "Ensuring Seamless Application Performance with Maintenance & DevOps",
-      content: "We offer 24/7 support, continuous updates, and performance optimization to ensure your applications remain secure, efficient, and up-to-date. Our DevOps-driven approach enhances agility, accelerates deployment cycles, and minimizes downtime, allowing businesses to focus on growth while we handle maintenance and improvements.",
-      sideHeading1: "Why Choose Our Maintenance & DevOps Services?",
-      sideContent1: "Our expert team ensures that your applications remain reliable, high-performing, and secure by implementing the latest technologies and best practices.",
+    "Student Services": {
+      heading: "Empowering Students with Technology Education",
+      content: "We provide comprehensive technology education and training programs designed specifically for students. Our services include coding bootcamps, project-based learning experiences, and career development support to help students build the skills they need for success in the tech industry.",
+      sideHeading1: "Why Choose Our Student Services?",
+      sideContent1: "Our student-focused programs combine practical skills development with industry insights, ensuring students are well-prepared for real-world technology careers.",
       sideItems1: [
-        { title: "24/7 Monitoring & Support:", content: "We provide real-time monitoring and proactive support to detect and resolve issues before they impact your business." },
-        { title: "Regular Updates & Security Patches:", content: "We keep your applications up to date with the latest security patches, bug fixes, and feature enhancements." },
-        { title: "Performance Optimization:", content: "Our team continuously analyzes and fine-tunes application performance for faster load times and improved user experience." }
+        { 
+          title: "Hands-on Learning:", 
+          content: "Students work on real projects using industry-standard tools and technologies, gaining practical experience that employers value." 
+        },
+        { 
+          title: "Industry-Aligned Curriculum:", 
+          content: "Our programs are designed in collaboration with industry experts to ensure students learn the most relevant and in-demand skills." 
+        },
+        { 
+          title: "Career Support:", 
+          content: "We provide career guidance, interview preparation, and networking opportunities to help students launch their tech careers." 
+        }
       ],
-      sideHeading2: "Our DevOps Approach",
-      sideContent2: "We integrate DevOps best practices to streamline development, deployment, and maintenance, ensuring smooth and efficient application management.",
+      sideHeading2: "Our Educational Approach",
+      sideContent2: "We follow a comprehensive approach to technology education that emphasizes both technical skills and professional development.",
       sideItems2: [
-        { title: "CI/CD Automation:", content: "We implement Continuous Integration and Continuous Deployment (CI/CD) pipelines to speed up software releases and maintain code quality." },
-        { title: "Infrastructure as Code (IaC):", content: "Automated infrastructure provisioning ensures consistency, scalability, and faster deployments." },
-        { title: "Cloud & Containerization:", content: "We leverage cloud platforms and containerization technologies like Docker and Kubernetes to enhance flexibility and reliability." }
+        { 
+          title: "Project-Based Learning:", 
+          content: "Students learn through hands-on projects that simulate real-world scenarios and challenges." 
+        },
+        { 
+          title: "Mentorship Program:", 
+          content: "Each student is paired with an industry professional who provides guidance and insights throughout their learning journey." 
+        },
+        { 
+          title: "Industry Integration:", 
+          content: "Regular workshops, tech talks, and industry visits help students understand current market trends and requirements." 
+        }
       ]
     }
 

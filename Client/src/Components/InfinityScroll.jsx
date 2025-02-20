@@ -1,18 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import amazon from "../assets/amazon.png";
-import dribble from "../assets/dribble.png";
-import hubspot from "../assets/hubspot.png";
-import notion from "../assets/notion.png";
-import netflix from "../assets/netflix.png";
-import zoom from "../assets/zoom.png";
+import gk from "../assets/gk logo2.png";
+import gr from "../assets/grcslogo.png";
+import sc from "../assets/SC logo1.png";
+import sp from "../assets/SP logo.png";
+
 const images = [
-  amazon,
-  dribble,
-  hubspot,
-  notion,
-  netflix,
-  zoom
+  gk,gr,sc,sp
 ];
 
 const InfinityScroll = () => {
@@ -30,12 +24,12 @@ const InfinityScroll = () => {
         }}
       >
         {/* Duplicate images to create seamless looping effect */}
-        {[...images, ...images].map((src, index) => (
+        {[...images, ...images,...images, ...images].map((src, index) => (
           <img
             key={index}
             src={src}
             alt={`scroll-img-${index}`}
-            className=" object-cover rounded-lg mx-10"
+            className=" object-cover rounded-lg mx-10 h-[100px] p-4 hover:scale-110 transition-all duration-500 ease-in-out"
           />
         ))}
       </motion.div>

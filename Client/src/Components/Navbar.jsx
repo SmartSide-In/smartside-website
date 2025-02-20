@@ -22,9 +22,12 @@ const Navbar = () => {
   }, []);
 
   const handleDropdownClick = useCallback((title, path) => {
-    navigate(path);
-    setActiveDropdown(null);
-  }, [navigate]);
+    // Desktop behavior remains the same
+    if (window.innerWidth >= 1024) {
+      navigate(path);
+    }
+    setActiveDropdown(title === activeDropdown ? null : title);
+  }, [navigate, activeDropdown]);
 
   const handleDropdownHover = useCallback((title) => {
     setActiveDropdown(title);
@@ -57,14 +60,9 @@ const Navbar = () => {
       ]
     },
     {
-      title: "PROJECTS",
+      title: "PRODUCTS",
       path: "/projects",
-      hasDropdown: true,
-      dropdownItems: [
-        { title: "Recent Projects", scrollTo: "recent-projects" },
-        { title: "Case Studies", scrollTo: "case-studies" },
-        { title: "Gallery", scrollTo: "gallery" }
-      ]
+      hasDropdown: false,
     },
     {
       title: "CAREER",
@@ -73,7 +71,6 @@ const Navbar = () => {
       dropdownItems: [
         { title: "Our Values", scrollTo: "values" },
         { title: "Our Benefits", scrollTo: "benefits" },
-        { title: "Job Opening", scrollTo: "job" }
       ]
     },
     {
@@ -197,19 +194,11 @@ const Navbar = () => {
                   {item.hasDropdown ? (
                     <div>
                       <button
-                        onClick={() => {
-                          if (activeDropdown === item.title) {
-                            setActiveDropdown(null);
-                          } else {
-                            setActiveDropdown(item.title);
-                            navigate(item.path);
-                          }
-                        }}
+                        onClick={() => setActiveDropdown(activeDropdown === item.title ? null : item.title)}
                         className="w-full flex items-center justify-between hover:text-primary-dark transition-colors"
                       >
                         {item.title}
-                        <HiChevronDown className={`transform transition-transform ${activeDropdown === item.title ? 'rotate-180' : ''
-                          }`} />
+                        <HiChevronDown className={`transform transition-transform ${activeDropdown === item.title ? 'rotate-180' : ''}`} />
                       </button>
                       <AnimatePresence>
                         {activeDropdown === item.title && (
@@ -228,8 +217,15 @@ const Navbar = () => {
                                 offset={-80}
                                 className="block py-2 hover:text-primary-dark cursor-pointer"
                                 onClick={() => {
+                                  navigate(item.path);
                                   setIsOpen(false);
                                   setActiveDropdown(null);
+                                  setTimeout(() => {
+                                    const element = document.getElementById(dropdownItem.scrollTo);
+                                    if (element) {
+                                      element.scrollIntoView({ behavior: 'smooth' });
+                                    }
+                                  }, 100);
                                 }}
                               >
                                 {dropdownItem.title}

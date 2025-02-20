@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '../Components/Navbar';
 import BoxContainer from '../Components/BoxContainer';
@@ -11,11 +11,131 @@ import icon from '../assets/icon.png';
 import Footer from '../Components/Footer';
 import GotoTop from '../Components/GotoTop';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+
 const Contact = () => {
+
+  const EMAIL_ID = 'service_850lu4i'
+  const TEMPLATE_ID = 'template_00cf8yo'
+  const PUBLIC_ID = 'dQ9ILQOvzgBlEk-xI'
+  const [formData, setFormData] = useState({
+    email: '',
+    phone: '',
+    address: '',
+    message: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState({ show: false, error: false, message: '' });
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+
+    // Clear status when user starts typing again
+    if (status.show) {
+      setStatus({ show: false, error: false, message: '' });
+    }
+  };
+
+  // Email validation
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  // Phone validation
+  const isValidPhone = (phone) => {
+    return /^\+?[\d\s-]{10,}$/.test(phone);
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus({ show: false, error: false, message: '' });
+
+    // Enhanced validation
+    if (!formData.email || !formData.phone || !formData.message) {
+      setStatus({
+        show: true,
+        error: true,
+        message: 'Please Fill in all Required Fields'
+      });
+      setLoading(false);
+      return;
+    }
+
+    if (!isValidEmail(formData.email)) {
+      setStatus({
+        show: true,
+        error: true,
+        message: 'Please Enter a valid Email Address'
+      });
+      setLoading(false);
+      return;
+    }
+
+    if (!isValidPhone(formData.phone)) {
+      setStatus({
+        show: true,
+        error: true,
+        message: 'Please Enter a valid Phone Number'
+      });
+      setLoading(false);
+      return;
+    }
+
+    // EmailJS configuration
+    const templateParams = {
+      from_email: formData.email,
+      from_phone: formData.phone,
+      from_address: formData.address || 'Not provided',
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(
+        EMAIL_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_ID
+      );
+
+      // Success
+      setStatus({
+        show: true,
+        error: false,
+        message: 'Message sent successfully!'
+      },setTimeout(() => {
+        setStatus({ show: false, error: false, message: '' });
+      }, 5000));
+
+      // Clear form
+      setFormData({
+        email: '',
+        phone: '',
+        address: '',
+        message: ''
+      });
+    } catch (error) {
+      // Error
+      setStatus({
+        show: true,
+        error: true,
+        message: 'Failed to send message. Please try again.'
+      });
+      console.error('EmailJS Error:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
-    <GotoTop/>
-      {/* SEO Section */}
+      <GotoTop />
       <Helmet>
         <title>Contact Us | SmartSide</title>
         <meta
@@ -45,19 +165,17 @@ const Contact = () => {
         <meta name="twitter:image" content="https://www.smartside.com/icon.png" />
       </Helmet>
 
-      {/* Page Content */}
       <div className="w-full flex items-center justify-center">
         <Navbar />
       </div>
       <BoxContainer name={'Contact'} />
 
       {/* Contact Info Section */}
-      <motion.div 
-      initial={{ opacity: 0, y:100 }}
-      animate={{ opacity: 1, y:0 }}
-      transition={{ duration: 0.5, delay:0.5 }}
-      className="mt-8 md:mt-30 w-[95%] md:w-[90%] lg:w-[80%] mx-auto flex flex-col md:flex-row gap-8 md:gap-0">
-        {/* Contact Details */}
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="mt-8 md:mt-30 w-[95%] md:w-[90%] lg:w-[80%] mx-auto flex flex-col md:flex-row gap-8 md:gap-0">
         <div className="w-full md:w-[30%]">
           <div className="flex items-center gap-5">
             <IoCall size={40} className="text-primary-btn-color" />
@@ -108,7 +226,6 @@ const Contact = () => {
 
       {/* Application Section */}
       <div className="mt-8 md:mt-30 w-[95%] md:w-[90%] lg:w-[70%] min-h-screen md:h-[80vh] mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-0">
-        {/* Left Section */}
         <div className="w-full md:w-[50%] h-auto md:h-[60%] flex flex-col items-start justify-center">
           <div className="flex items-center gap-3">
             <img src={icon} alt="Icon" />
@@ -140,26 +257,34 @@ const Contact = () => {
         </div>
 
         {/* Form Section */}
-        <div className="w-full md:w-[50%] font-header">
+        <form onSubmit={handleSubmit} className="w-full md:w-[50%] font-header">
           <div className="w-full flex flex-col md:flex-row items-center gap-4 md:gap-2 md:justify-between">
             <span className="w-full md:w-[49%]">
-              <p className="font-header">Your Email</p>
+              <p className="font-header">Your Email <span className="text-red-500">*</span></p>
               <span className="relative">
                 <input
-                  type="text"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Your Email"
-                  className="py-3 px-4 mt-2 w-full border border-gray-400 rounded-full"
+                  className="py-3 px-4 mt-2 w-full border border-gray-400 rounded-full focus:outline-none focus:border-primary-btn-color"
+                  required
                 />
                 <RiSendPlaneFill className="absolute right-4 top-1 text-gray-500" />
               </span>
             </span>
             <span className="w-full md:w-[49%]">
-              <p className="font-header">Your Phone</p>
+              <p className="font-header">Your Phone <span className="text-red-500">*</span></p>
               <span className="relative">
                 <input
-                  type="text"
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   placeholder="Your Phone"
-                  className="py-3 mt-2 px-4 w-full border border-gray-400 rounded-full"
+                  className="py-3 mt-2 px-4 w-full border border-gray-400 rounded-full focus:outline-none focus:border-primary-btn-color"
+                  required
                 />
                 <IoCall className="absolute right-4 top-1 text-gray-500" />
               </span>
@@ -170,28 +295,49 @@ const Contact = () => {
             <div className="relative">
               <input
                 type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
                 placeholder="Your Address"
-                className="py-3 px-4 mt-2 w-full border border-gray-400 rounded-full"
+                className="py-3 px-4 mt-2 w-full border border-gray-400 rounded-full focus:outline-none focus:border-primary-btn-color"
               />
-              <IoLocationSharp className="absolute right-4 top-6 md:top-4 text-gray-500" />
+              <IoLocationSharp className="absolute right-4 top-6 text-gray-500" />
             </div>
           </div>
           <div className="mt-5">
-            <p className="font-header">Message</p>
+            <p className="font-header">Message <span className="text-red-500">*</span></p>
             <div className="relative">
               <textarea
                 rows={8}
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Write Message .."
-                className="mt-2 border border-gray-400 rounded-xl w-full p-5"
+                className="mt-2 border border-gray-400 rounded-xl w-full p-5 focus:outline-none focus:border-primary-btn-color"
+                required
               />
             </div>
           </div>
+          {status.show && (
+            <div
+              className={`mt-4 p-3 rounded-lg ${status.error ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'
+                }`}
+              role="alert"
+            >
+              {status.message}
+            </div>
+          )}
+
           <div>
-            <button className="mt-5 py-4 px-7 bg-primary-btn-color w-full text-white rounded-full md:rounded-4xl">
-              Send message
+            <button
+              type="submit"
+              disabled={loading}
+              className="mt-5 py-4 px-7 bg-primary-btn-color w-full text-white rounded-full md:rounded-4xl hover:bg-opacity-90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              {loading ? 'Sending...' : 'Send message'}
             </button>
           </div>
-        </div>
+        </form>
       </div>
       <Footer />
     </>

@@ -15,7 +15,7 @@ const Footer = () => {
                     <Link to={'/'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Home</li></Link>
                     <Link to={'/about'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>About us</li></Link>
                     <Link to={'/services'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Services</li></Link>
-                    <Link to={'/projects'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Projects</li></Link>
+                    <Link to={'/projects'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Products</li></Link>
                     <Link to={'/career'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Career</li></Link>
                     <Link to={'/contact'}><li className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Contact</li></Link>
                 </ul>

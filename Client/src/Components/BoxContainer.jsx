@@ -19,7 +19,7 @@ const BoxContainer = ({ name }) => {
                 <h1 className='text-3xl md:text-6xl font-primary font-bold py-10 md:py-20 px-5 md:px-10'>
                     {name === 'Career' ? 'Life @ Smartside' :
                         name === 'Services' ? 'Our Services' :
-                        name === 'Projects' ? 'Our Projects' :
+                        name === 'Projects' ? 'Our Products' :
                         name === 'Contact' ? 'Contact Us' : 'About Us'}
                 </h1>
             </div>

@@ -181,7 +181,7 @@ const Service = () => {
       </div>
 
       {/* Pricing Cards */}
-      <div className="mt-16 md:mt-20 w-full h-auto px-4 md:px-6" id='plans'>
+      {/* <div className="mt-16 md:mt-20 w-full h-auto px-4 md:px-6" id='plans'>
         <div className='w-full lg:w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8'>
           <PriceCard
             planType={'Starter Plan'}
@@ -232,7 +232,7 @@ const Service = () => {
             text4={'Your Startup'}
           />
         </div>
-      </div>
+      </div> */}
 
       <Footer />
     </>

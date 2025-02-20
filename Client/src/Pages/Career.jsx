@@ -4,7 +4,6 @@ import BoxContainer from '../Components/BoxContainer'
 import Footer from '../Components/Footer'
 import competative from '../assets/competative.png'
 import GotoTop from '../Components/GotoTop'
-import JobBox from '../Components/JobBox'
 import { Helmet } from "react-helmet";
 import { motion } from 'framer-motion'
 const CareersSEO = () => {
@@ -291,7 +290,7 @@ const Career = () => {
       </div>
 
       {/* Job Openings Section */}
-      <div className='mt-20 md:mt-30 w-full md:w-[90%] lg:w-[80%] mx-auto px-4 md:px-6' id='job'>
+      {/* <div className='mt-20 md:mt-30 w-full md:w-[90%] lg:w-[80%] mx-auto px-4 md:px-6' id='job'>
         <div className='w-full lg:w-[80%] mx-auto'>
           <h1 className='text-3xl md:text-4xl font-normal font-project text-primary-btn-color'>Job Openings</h1>
           <p className='mt-3 md:mt-5 font-project font-light w-full md:w-[90%] text-base md:text-lg'>Explore exciting job openings at YourBank, where we value talent, innovation, and a passion for customer service. Join our team and be part of shaping a brighter future in the banking industry</p>
@@ -301,7 +300,7 @@ const Career = () => {
             <JobBox type={'IT Security Specialist'} />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className='w-full mt-16 md:mt-20'>
         <Footer />

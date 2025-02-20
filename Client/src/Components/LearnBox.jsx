@@ -10,7 +10,7 @@ import { BsArrowUpRightCircleFill } from "react-icons/bs";
 const LearnBox = ({ name }) => {
     return (
         <div
-            className={`w-full max-w-[735px] h-auto md:h-[380px] border border-black rounded-3xl flex flex-col md:flex-row items-center justify-between p-6 md:p-10 font-number shadow-lg transition-transform hover:scale-[1.02] ${
+            className={`w-full max-w-[735px] h-auto md:h-[300px] border border-black rounded-3xl border-b-5 flex flex-col md:flex-row items-center justify-between p-6 md:p-10 font-number shadow-lg transition-transform hover:scale-[1.02] ${
                 name === "E-Commerce Solutions" || name === "Cloud Computing Solutions"
                     ? "bg-primary-btn-color"
                     : name === "AI & Machine Learning Integration" || name === "UI/UX Design"
