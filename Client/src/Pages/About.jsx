@@ -10,7 +10,11 @@ import object from "../assets/OBJECTS.png";
 import { FaCircleCheck } from "react-icons/fa6";
 import Footer from "../Components/Footer";
 import { Helmet } from "react-helmet";
-
+import { useNavigate } from "react-router-dom";
+import mock1 from "../assets/mock3.jpg";
+import mock2 from "../assets/mock2.jpg";
+import bgImage from "../assets/CREATIVEIDEA.png";
+import { BsFillTelephoneFill } from "react-icons/bs";
 const AboutSEO = () => {
   const structuredData = {
     "@context": "https://schema.org",
@@ -83,7 +87,6 @@ const AboutSEO = () => {
       <meta name="robots" content="index, follow" />
       <meta name="language" content="English" />
       <link rel="canonical" href={window.location.href} />
-
       {/* Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify(structuredData)}
@@ -91,7 +94,9 @@ const AboutSEO = () => {
     </Helmet>
   );
 };
+
 const About = () => {
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -148,33 +153,33 @@ const About = () => {
       sideHeading1: "Why Choose Our Student Services?",
       sideContent1: "Our student-focused programs combine practical skills development with industry insights, ensuring students are well-prepared for real-world technology careers.",
       sideItems1: [
-        { 
-          title: "Hands-on Learning:", 
-          content: "Students work on real projects using industry-standard tools and technologies, gaining practical experience that employers value." 
+        {
+          title: "Hands-on Learning:",
+          content: "Students work on real projects using industry-standard tools and technologies, gaining practical experience that employers value."
         },
-        { 
-          title: "Industry-Aligned Curriculum:", 
-          content: "Our programs are designed in collaboration with industry experts to ensure students learn the most relevant and in-demand skills." 
+        {
+          title: "Industry-Aligned Curriculum:",
+          content: "Our programs are designed in collaboration with industry experts to ensure students learn the most relevant and in-demand skills."
         },
-        { 
-          title: "Career Support:", 
-          content: "We provide career guidance, interview preparation, and networking opportunities to help students launch their tech careers." 
+        {
+          title: "Career Support:",
+          content: "We provide career guidance, interview preparation, and networking opportunities to help students launch their tech careers."
         }
       ],
       sideHeading2: "Our Educational Approach",
       sideContent2: "We follow a comprehensive approach to technology education that emphasizes both technical skills and professional development.",
       sideItems2: [
-        { 
-          title: "Project-Based Learning:", 
-          content: "Students learn through hands-on projects that simulate real-world scenarios and challenges." 
+        {
+          title: "Project-Based Learning:",
+          content: "Students learn through hands-on projects that simulate real-world scenarios and challenges."
         },
-        { 
-          title: "Mentorship Program:", 
-          content: "Each student is paired with an industry professional who provides guidance and insights throughout their learning journey." 
+        {
+          title: "Mentorship Program:",
+          content: "Each student is paired with an industry professional who provides guidance and insights throughout their learning journey."
         },
-        { 
-          title: "Industry Integration:", 
-          content: "Regular workshops, tech talks, and industry visits help students understand current market trends and requirements." 
+        {
+          title: "Industry Integration:",
+          content: "Regular workshops, tech talks, and industry visits help students understand current market trends and requirements."
         }
       ]
     }
@@ -205,7 +210,7 @@ const About = () => {
 
   useEffect(() => {
     if (isVisible) {
-      const targetValues = { projects: 10, team: 20, awards: 5, clients: 100 };
+      const targetValues = { projects: 10, team: 15, awards: 5, clients: 50 };
       const duration = 2000; // Animation duration in milliseconds
       const intervalTime = 50; // Interval time in milliseconds
       const steps = duration / intervalTime; // Total steps
@@ -259,11 +264,11 @@ const About = () => {
         <Navbar />
       </div>
       <BoxContainer name={"About Us"} />
-      <motion.div 
-      initial={{ opacity: 0, y:100 }}
-      animate={{ opacity: 1, y:0 }}
-      transition={{ duration: 0.5, delay: 0.5 }}
-      className="w-[90%] mx-auto mt-10 lg:mt-25 flex flex-col lg:flex-row justify-between">
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="w-[90%] mx-auto mt-10 lg:mt-25 flex flex-col lg:flex-row justify-between">
         {/* Main Content */}
         <div className="w-full lg:w-[70%] p-4 lg:p-6 rounded-lg " id="orustory">
           <h1 className="text-3xl lg:text-6xl font-bold font-header">{contentData[selectedButton]?.heading}</h1>
@@ -332,45 +337,85 @@ const About = () => {
       </motion.div>
 
       {/* Stats Section */}
-      <div ref={sectionRef} className="w-full mt-10 lg:mt-20 flex justify-center items-center h-auto lg:h-screen" id="smartside-resources">
-        <div className="w-[90%] h-auto lg:h-[90%] overflow-hidden rounded-3xl flex flex-col lg:flex-row justify-between">
-          <div className="w-full lg:w-[30%] bg-primary rounded-4xl"></div>
-          <div className="w-full lg:w-[65%] rounded-3xl flex flex-col justify-between mt-8 lg:mt-0">
-            <div className="w-full h-auto lg:h-[60%] flex flex-col lg:flex-row justify-between">
-              <div className="w-full lg:w-[60%] flex flex-col font-header p-4 lg:p-15">
+      <div
+        ref={sectionRef}
+        className="w-full py-8 sm:py-12 lg:py-20 flex justify-center items-center min-h-[calc(100vh-80px)]"
+        id="smartside-resources"
+      >
+        <div className="w-[90%] max-w-[1400px] h-auto lg:h-[90vh] overflow-hidden rounded-3xl flex flex-col lg:flex-row gap-6 lg:gap-12">
+          {/* Left Image */}
+          <div
+            className="hidden lg:block w-full lg:w-[30%] h-[300px] sm:h-[400px] lg:h-full bg-primary rounded-3xl transform transition-transform hover:scale-[1.02]"
+            style={{
+              backgroundImage: `url(${mock1})`,
+              backgroundSize: "cover",
+              backgroundPosition: "start",
+              backgroundRepeat: "no-repeat"
+            }}
+          />
+
+          {/* Right Content */}
+          <div className="w-full lg:w-[65%] flex flex-col justify-between gap-6 lg:gap-8">
+            {/* Top Content Section */}
+            <div className="w-full flex flex-col lg:flex-row gap-6 lg:gap-8">
+              {/* Text Content */}
+              <div className="w-full lg:w-[60%] flex flex-col p-4 sm:p-6 lg:p-8">
                 <img
                   src={aboutBox}
                   alt="world Image"
-                  className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px]"
+                  className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] lg:w-[100px] lg:h-[100px] object-contain"
                 />
-                <h2 className="mt-5 text-2xl lg:text-3xl font-bold">Why Choose SmartSide?</h2>
-                <p className="mt-5 text-gray-400 leading-[25px] lg:leading-[35px]">With a team of experts dedicated to innovation, scalability, and performance, we transform your ideas into highly functional, future-ready solutions. Whether you need a robust website, AI-powered automation, or seamless application support, we make it happen!
+                <h2 className="mt-4 sm:mt-5 lg:mt-6 text-2xl sm:text-3xl lg:text-4xl font-bold font-header">
+                  Why Choose SmartSide?
+                </h2>
+                <p className="mt-4 sm:mt-5 lg:mt-6 text-gray-400 text-sm sm:text-base lg:text-lg leading-[25px] sm:leading-[30px] lg:leading-[35px]">
+                  With a team of experts dedicated to innovation, scalability, and performance,
+                  we transform your ideas into highly functional, future-ready solutions.
+                  Whether you need a robust website, AI-powered automation, or seamless
+                  application support, we make it happen!
                 </p>
-                <Link to={'/contact'}>
-                  <button className="flex items-center gap-4 border mt-5 w-full lg:w-[30%] border-gray-300 rounded-full px-4 py-4 text-sm font-semibold">
+                <Link to="/contact" className="mt-6 sm:mt-8">
+                  <button className="flex items-center justify-center sm:justify-start gap-3 border border-gray-300 
+                  rounded-full px-6 py-3 text-sm font-semibold hover:bg-gray-50 transition-all
+                  w-full sm:w-auto">
                     Contact us
-                    <HiArrowRight />
+                    <HiArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
                 </Link>
               </div>
-              <div className="w-full lg:w-[35%] rounded-3xl bg-primary mt-8 lg:mt-0"></div>
+
+              {/* Right Image */}
+              <div
+                className="hidden lg:block w-full lg:w-[35%] h-[300px] sm:h-[350px] lg:h-auto rounded-3xl bg-primary 
+              transform transition-transform hover:scale-[1.02]"
+                style={{
+                  backgroundImage: `url(${mock2})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat"
+                }}
+              />
             </div>
-            <div className="w-full font-header text-white flex flex-col lg:flex-row justify-between h-auto lg:h-[30%] rounded-3xl bg-primary-btn-color px-4 lg:px-30 py-8 lg:py-20 mt-8 lg:mt-0">
-              <StatBox value={counts.projects} suffix="k+" label="Completed Projects" />
-              <StatBox value={counts.team} suffix="+" label="Team Members" />
-              <StatBox value={counts.awards} suffix="k+" label="Winning Awards" />
-              <StatBox value={counts.clients} suffix="+" label="Clients Served" />
+
+            {/* Stats Grid */}
+            <div className="w-full font-header text-white rounded-3xl bg-primary-btn-color 
+            px-4 sm:px-8 lg:px-12 py-6 sm:py-10 lg:py-12">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                <StatBox value={counts.projects} suffix="+" label="Completed Projects" />
+                <StatBox value={counts.team} suffix="+" label="Team Members" />
+                <StatBox value={counts.awards} suffix="+" label="Services" />
+                <StatBox value={counts.clients} suffix="+" label="Clients Served" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-
       {/* Why Choose Us Section */}
       <div className="w-full h-auto lg:h-screen">
         <div className="w-[90%] h-full mx-auto flex flex-col lg:flex-row justify-between">
           <div className="w-full lg:w-[40%] hidden md:flex items-center justify-center mt-8 lg:mt-0">
-            <div className="h-[60%] w-full lg:w-[80%] bg-primary rounded-2xl relative before:absolute before:inset-0 before:border-3 before:rounded-2xl before:border-black before:content-[''] before:scale-[1] before:translate-x-[-45px] before:translate-y-[40px] before:z-10">
-              <div className="absolute -right-10 bottom-10 hidden md:flex items-center bg-primary-btn-color w-full lg:w-[40%] h-[100px] z-100 rounded-xl px-5 gap-5 font-header">
+            <div className="h-[60%] w-full lg:w-[80%] bg-primary rounded-2xl relative before:absolute before:inset-0 before:border-3 before:rounded-2xl before:border-black before:content-[''] before:scale-[1] before:translate-x-[-45px] before:translate-y-[40px] before:z-10" style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+              <div className="absolute -right-10 bottom-10 hidden lg:flex items-center bg-primary-btn-color w-full lg:w-[40%] h-[100px] z-100 rounded-xl px-5 gap-5 font-header">
                 <h1 className="text-4xl lg:text-5xl font-bold text-white">25</h1>
                 <p className="text-white">Years Of Experience</p>
               </div>
@@ -389,26 +434,31 @@ const About = () => {
                 <div className="flex flex-col gap-5">
                   <div className="flex items-center gap-7">
                     <FaCircleCheck size={20} />
-                    <h2 className="text-lg lg:text-xl font-semibold">Marketing Services</h2>
+                    <h2 className="text-lg lg:text-xl font-semibold">Industry-Leading Expertise</h2>
                   </div>
-                  <p className="text-gray-400 mx-12">Smart Side offers result-driven marketing services to boost brand visibility, engagement, and conversions. From SEO to social media strategies, we help businesses grow effectively.</p>
+                  <p className="text-gray-400 mx-12">Our team comprises seasoned professionals with extensive expertise in web development, e-commerce, AI, DevOps, and cloud solutions. By staying at the forefront of industry advancements, we deliver innovative solutions that drive business success.</p>
                 </div>
               </div>
               <div className="mt-5 font-header">
                 <div className="flex flex-col gap-5">
                   <div className="flex items-center gap-7">
                     <FaCircleCheck size={20} />
-                    <h2 className="text-lg lg:text-xl font-semibold">IT Maintenance</h2>
+                    <h2 className="text-lg lg:text-xl font-semibold">Tailored and Scalable Solutions</h2>
                   </div>
-                  <p className="text-gray-400 mx-12">Smart Side provides reliable IT maintenance services, ensuring seamless operations with 24/7 support, security updates, and system optimizations to keep your business running efficiently.</p>
+                  <p className="text-gray-400 mx-12">Understanding that every business has unique needs, customized and scalable solutions are developed to adapt and grow with organizations. Whether for startups or large enterprises, these solutions are designed to support long-term growth and maximize value.</p>
                 </div>
                 <div className="mt-5 h-[80px] flex items-center">
-                  <button className="flex bg-primary-btn-color py-4 lg:py-6 px-6 lg:px-8 rounded-full text-sm items-center gap-3 text-white">
+                  <button
+                    className="flex bg-primary-btn-color py-4 lg:py-6 px-6 lg:px-8 rounded-full text-sm items-center gap-3 text-white"
+                    onClick={() => navigate('/contact')}
+                  >
                     Read more
                     <HiArrowRight />
                   </button>
 
-                  <div className="w-[50px] lg:w-[70px] ml-8 h-[50px] lg:h-[70px] bg-primary-btn-color rounded-full"></div>
+                  <div className="w-[50px] lg:w-[70px] ml-8 h-[50px] lg:h-[70px] bg-primary-btn-color rounded-full flex items-center justify-center">
+                    <BsFillTelephoneFill size={20} color="white" />
+                  </div>
                   <div className="font-header ml-4">
                     <p className="text-gray-500">Need help ?</p>
                     <h2 className="font-semibold">+91 9361327770</h2>

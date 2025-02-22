@@ -4,7 +4,7 @@ import facebook from '../assets/facebook.png'
 import linkedin from '../assets/linkedin.png'
 import twitter from '../assets/twitter.png'
 import { Link } from 'react-router-dom'
-
+import policyFile from '../File/PRIVACY POLICY of SmartSide.pdf'
 const Footer = () => {
     return (
         <div className='w-[90%] mx-auto mt-[8%] h-auto rounded-tl-[60px] rounded-tr-[60px] px-4 md:px-[60px] py-10 bg-[#191A23] box-border'>
@@ -47,7 +47,7 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <p className='mt-6 md:mt-8 text-white font-number text-sm md:text-base text-center'>
-                © 2023 Smartside. All Rights Reserved. <span className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Privacy Policy</span>
+                © 2023 Smartside. All Rights Reserved. <a href={policyFile} download= "Privacy Policy of SmartSide.pdf" className='underline cursor-pointer hover:text-primary-btn-color transition-all'>Privacy Policy</a>
             </p>
         </div>
     )

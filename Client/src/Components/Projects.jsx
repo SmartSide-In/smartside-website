@@ -5,6 +5,11 @@ import { motion } from 'framer-motion';
 import grcss from '../assets/grcss.png';
 import startuculturess from '../assets/startupculturess.png';
 import gkss from '../assets/gkss.png';
+import SOCI from '../assets/SOCI.png';
+import GksLogo from '../assets/gk logo2.png';
+import grces from '../assets/grcslogo.png';
+import sk from '../assets/SC logo1.png';
+import sp from '../assets/SP logo.png';
 const Projects = () => {
     const [openIndex, setOpenIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -13,25 +18,29 @@ const Projects = () => {
             title: "Startup Culture Foundation",
             description: "We collaborated with Startup Culture Foundation to create a dynamic portfolio website showcasing their initiatives and contributions to the startup community.",
             link: "https://startupculture.co.in/",
-            bgImage: startuculturess
+            bgImage: startuculturess,
+            thumbnailImage: sk
         },
         {
             title: "GK Wedding and Event Management",
             description: "We partnered with GK Wedding and Event Management to create an elegant, functional website with a seamless user experience.",
             link: "https://gkevents.netlify.app/",
-            bgImage: gkss
+            bgImage: gkss,
+            thumbnailImage: GksLogo
         },
         {
             title: "Socio Potent",
             description: "We developed a portfolio website for Socio Potent, showcasing their mission to guide individuals in self-discovery, skill enhancement, and career growth.",
             link: "https://sociopotents.in/lander",
-            bgImage: "https://your-image-url/socio-potent.jpg"
+            bgImage: SOCI,
+            thumbnailImage: sp
         },
         {
             title: "Geearr Consumer Solutions",
             description: "We developed a web application for Geearr Consumer Solutions, featuring a portfolio, user and admin dashboards, and an integrated e-commerce section. ",
             link: "https://grcspl.com/",
-            bgImage: grcss
+            bgImage: grcss,
+            thumbnailImage: grces
         }
     ];
 
@@ -53,12 +62,24 @@ const Projects = () => {
     };
 
     const handleDivClick = (index) => {
-        if (!isMobile && openIndex !== index) {
+        // Remove the !isMobile condition to allow clicking on mobile
+        if (openIndex !== index) {
             setOpenIndex(index);
         }
     };
 
-    const ProjectCard = ({ index, title, description, link, bgImage, isOpen }) => {
+    const ProjectCard = ({ index, title, description, link, bgImage, thumbnailImage, isOpen }) => {
+        const [isExpanded, setIsExpanded] = useState(false);
+
+        const handleCardClick = () => {
+            if (isMobile) {
+                setIsExpanded(!isExpanded);
+                handleDivClick(index);
+            } else {
+                handleDivClick(index);
+            }
+        };
+
         const handleButtonClick = (e) => {
             e.stopPropagation();
             window.open(link, "_blank");
@@ -67,22 +88,44 @@ const Projects = () => {
         return (
             <motion.div
                 className={`relative cursor-pointer transition-all duration-800 ease-in-out rounded-lg overflow-hidden
-                    w-full md:w-[14%] h-[350px] md:h-[90%] flex flex-col items-center justify-center
-                    ${!isOpen ? 'bg-primary' : ''}`}
+                w-full md:w-[14%] h-[350px] md:h-[90%] flex flex-col items-center justify-center
+                ${!isOpen ? 'bg-primary' : ''}`}
                 style={{
                     width: isOpen ? '100%' : '50%',
                     height: isOpen ? '350px' : '350px',
-                    ...(isOpen && {
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url(${bgImage})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    })
+                    backgroundImage: isOpen
+                        ? `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url(${bgImage})`
+                        : 'none',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    transition: 'all 0.5s ease-in-out'
                 }}
-                onClick={() => handleDivClick(index)}
+                onClick={handleCardClick}
             >
-                <div className={`absolute top-3 right-3 h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full border ${isOpen ? 'border-white text-white' : 'border-black'} flex justify-center items-center font-number font-bold z-10`}>
+                <div className={`absolute top-3 right-3 h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full border 
+                ${isOpen ? 'border-white text-white' : 'border-black text-black'} 
+                flex justify-center items-center font-number font-bold z-10`}>
                     {index + 1}
                 </div>
+
+                {!isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex flex-col items-center justify-center w-full h-full gap-4"
+                    >
+                        <div className="w-[80%] h-[60%] overflow-hidden rounded-lg">
+                            <img
+                                src={thumbnailImage}
+                                alt={title}
+                                className="w-[100%] h-auto object-cover"
+                            />
+                        </div>
+                        <h3 className="text-sm md:text-base font-primary font-bold text-center px-4">{title}</h3>
+                    </motion.div>
+                )}
+
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -146,6 +189,7 @@ const Projects = () => {
                         description={project.description}
                         link={project.link}
                         bgImage={project.bgImage}
+                        thumbnailImage={project.thumbnailImage} 
                         isOpen={isMobile || openIndex === index}
                     />
                 ))}

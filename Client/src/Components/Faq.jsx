@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { HiArrowRight } from 'react-icons/hi';
-
+import { useNavigate } from 'react-router-dom';
 const Faq = () => {
+    const navigate = useNavigate();
     const [activeIndex, setActiveIndex] = useState(null);
 
     const faqItems = [
@@ -65,7 +66,7 @@ const Faq = () => {
 
             {/* Button Section */}
             <div className="w-full py-8 flex items-center justify-center">
-                <button className="flex items-center gap-3 py-4 md:py-5 border border-black rounded-full px-5 md:px-7 text-base md:text-lg hover:bg-gray-100 transition-colors duration-300">
+                <button className="flex items-center gap-3 py-4 md:py-5 border border-black rounded-full px-5 md:px-7 text-base md:text-lg hover:bg-gray-100 transition-colors duration-300" onClick={() => navigate('/contact')}>
                     Have More Questions <HiArrowRight />
                 </button>
             </div>

@@ -12,6 +12,11 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const handleButton = () => {
+    // window.open("https://forms.gle/ueWLdJrpWQwW2cxX8", "_blank");
+    navigate("/contact");
+  }
+
   useEffect(() => {
     setActiveDropdown(null);
     setIsOpen(false);
@@ -165,7 +170,7 @@ const Navbar = () => {
         </ul>
 
         {/* CTA Button */}
-        <button className="hidden lg:flex items-center gap-3 py-3 px-6 rounded-full font-semibold bg-primary-btn-color text-white cursor-pointer hover:bg-primary-dark transition">
+        <button className="hidden lg:flex items-center gap-3 py-3 px-6 rounded-full font-semibold bg-primary-btn-color text-white cursor-pointer hover:bg-primary-dark transition" onClick={handleButton}>
           Get an appointment
           <HiArrowRight />
         </button>

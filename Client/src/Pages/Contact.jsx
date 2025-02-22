@@ -109,7 +109,7 @@ const Contact = () => {
         show: true,
         error: false,
         message: 'Message sent successfully!'
-      },setTimeout(() => {
+      }, setTimeout(() => {
         setStatus({ show: false, error: false, message: '' });
       }, 5000));
 
@@ -171,12 +171,12 @@ const Contact = () => {
       <BoxContainer name={'Contact'} />
 
       {/* Contact Info Section */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
         className="mt-8 md:mt-30 w-[95%] md:w-[90%] lg:w-[80%] mx-auto flex flex-col md:flex-row gap-8 md:gap-0">
-        <div className="w-full md:w-[30%]">
+        <div className="w-full md:w-[50%]">
           <div className="flex items-center gap-5">
             <IoCall size={40} className="text-primary-btn-color" />
             <span>
@@ -193,39 +193,41 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Business Hours */}
-        <div className="w-full md:w-[30%] border-t md:border-t-0 md:border-l border-gray-400 pt-8 md:pt-0 md:pl-8 lg:pl-30">
-          <div className="flex flex-col">
+        {/* Business Hours *
+        <div className="w-full md:w-[50%] border-t md:border-t-0 md:border-l border-gray-400 pt-8 md:pt-0 md:pl-8 lg:pl-12">
+          <div className="flex flex-col space-y-2">
             <p className="font-header text-gray-400">Monday</p>
             <span className="flex items-center gap-3">
-              <HiClock className="text-primary-btn-color" />
-              <p className="font-header font-semibold mt-2">9am - 8pm</p>
+              <HiClock className="text-primary-btn-color text-xl" />
+              <p className="font-header font-semibold">9am - 8pm</p>
             </span>
           </div>
-          <div className="flex flex-col mt-8 md:mt-10">
+
+          <div className="flex flex-col space-y-2 mt-6 md:mt-8">
             <p className="font-header text-gray-400">Tuesday-Friday</p>
             <span className="flex items-center gap-3">
-              <HiClock className="text-primary-btn-color" />
-              <p className="font-header font-semibold mt-2">12am - 9pm</p>
+              <HiClock className="text-primary-btn-color text-xl" />
+              <p className="font-header font-semibold">12am - 9pm</p>
             </span>
           </div>
-          <div className="flex flex-col mt-8 md:mt-10">
+
+          <div className="flex flex-col space-y-2 mt-6 md:mt-8">
             <p className="font-header text-gray-400">Saturday</p>
             <span className="flex items-center gap-3">
-              <HiClock className="text-primary-btn-color" />
-              <p className="font-header font-semibold mt-2">8am - 3pm</p>
+              <HiClock className="text-primary-btn-color text-xl" />
+              <p className="font-header font-semibold">8am - 3pm</p>
             </span>
           </div>
         </div>
 
-        {/* Background Block */}
-        <div className="w-full md:w-[40%] h-48 md:h-auto">
-          <div className="w-[90%] md:w-[80%] h-full md:h-[90%] rounded-xl bg-primary mx-auto"></div>
-        </div>
-      </motion.div>
+        {/* Background Block 
+        {/* <div className="w-full md:w-[40%] h-48 md:h-auto">
+          <div className="w-[90%] md:w-[80%] h-full md:h-[90%] rounded-xl bg-primary mx-auto" style={{}}></div>
+        </div> 
+      </motion.div> */}
 
       {/* Application Section */}
-      <div className="mt-8 md:mt-30 w-[95%] md:w-[90%] lg:w-[70%] min-h-screen md:h-[80vh] mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-0">
+      <div className="mt-8 md:mt-20 h-auto w-[95%] md:w-[90%] lg:w-[70%] md:h-[60vh] mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-0">
         <div className="w-full md:w-[50%] h-auto md:h-[60%] flex flex-col items-start justify-center">
           <div className="flex items-center gap-3">
             <img src={icon} alt="Icon" />

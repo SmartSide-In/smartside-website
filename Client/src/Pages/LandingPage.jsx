@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import Navbar from '../Components/Navbar'
 import { HiArrowRight, HiCheck } from 'react-icons/hi'
 import { motion } from 'framer-motion'
-import Mobile from '../assets/Group 36.png'
+import Mobile from '../assets/mobileLogo.png'
+import Mobile2 from '../assets/mobiledoodle.png'
 import aboutLogo from '../assets/aboutLogo.png'
 import icon from '../assets/icon.png'
 import service from '../assets/services.png'
@@ -15,13 +16,16 @@ import GotoTop from '../Components/GotoTop'
 import Footer from '../Components/Footer'
 import LearnBox from '../Components/LearnBox'
 import { Helmet } from 'react-helmet'
-import ReviewBox from '../Components/ReviewBox'
+import FirstStart from '../assets/CREATIVEIDEA.png'
+import SecondStart from '../assets/PENCIL.png'
+import { useNavigate } from 'react-router-dom'
+import GetInternship from '../Components/GetInternship'
 const LandingPage = () => {
   const [count, setCount] = useState(0);
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [visible, setVisible] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -44,12 +48,15 @@ const LandingPage = () => {
     };
   }, []);
 
-
+  const handleButton = () => {
+    // window.open("https://forms.gle/ueWLdJrpWQwW2cxX8", "_blank");
+    navigate("/contact");
+  }
   useEffect(() => {
     if (isVisible) {
       let current = 1;
       const interval = setInterval(() => {
-        if (current < 5) {
+        if (current < 4) {
           setCount((prev) => prev + 1);
           current++;
         } else {
@@ -64,6 +71,7 @@ const LandingPage = () => {
 
   return (
     <>
+
       <Helmet>
         {/* Primary Meta Tags */}
         <title>SmartSide - Where Innovation Gets Smarter | Web Development & AI Solutions</title>
@@ -143,7 +151,7 @@ const LandingPage = () => {
               { opacity: 1, x: 0, transition: { delay: 1, duration: 0.5 } },
               { y: [0, -10, 0], transition: { repeat: Infinity, repeatType: "reverse", duration: 1.7 } }
             ]}
-            src={Mobile}
+            src={Mobile2}
             alt="design"
             className="z-5 absolute 
             hidden sm:block
@@ -205,10 +213,11 @@ const LandingPage = () => {
                                px-6 md:px-7 lg:px-8 
                                border border-black cursor-pointer rounded-full 
                                font-secondary text-xs md:text-sm 
-                               text-center whitespace-nowrap'>
-                  Request Quote <HiArrowRight />
+                               text-center whitespace-nowrap'
+                  onClick={handleButton}>
+                  Request Quota <HiArrowRight />
                 </button>
-                <div className='font-secondary flex items-center gap-2 cursor-pointer text-xs md:text-sm whitespace-nowrap'>
+                {/* <div className='font-secondary flex items-center gap-2 cursor-pointer text-xs md:text-sm whitespace-nowrap'>
                   <div className="w-[40px] md:w-[45px] lg:w-[50px] 
                               h-[40px] md:h-[45px] lg:h-[50px] 
                               flex items-center justify-center 
@@ -222,7 +231,7 @@ const LandingPage = () => {
                     </div>
                   </div>
                   Watch Our Videos
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -230,12 +239,12 @@ const LandingPage = () => {
       </section>
 
       {/* home section ends here */}
-
+      <GetInternship/>
 
       {/* about section starts here */}
       <section
         id="about"
-        className='w-full py-16 md:py-20 lg:py-28'
+        className='w-full pt-16 md:pt-20 lg:pt-28'
       >
         <div className='w-full flex flex-col items-center'>
           <div className='w-[92%] md:w-[90%] mx-auto flex flex-col lg:flex-row items-start gap-12 lg:gap-16'>
@@ -244,7 +253,9 @@ const LandingPage = () => {
               <div className="w-full max-w-[300px] aspect-square rounded-lg bg-gray-200 relative
                     before:absolute before:left-[15px] before:top-[15px] before:-right-[15px] before:-bottom-[15px]
                     before:border before:rounded-lg before:border-primary-btn-color before:content-['']
-                    before:z-10 shadow-md">
+                    before:z-10 shadow-md"
+                style={{ backgroundImage: `url(${FirstStart})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+              >
               </div>
               <img
                 src={aboutLogo}
@@ -270,7 +281,7 @@ const LandingPage = () => {
                   </div>
                 </div>
               </div>
-              <div className='w-full aspect-video lg:aspect-[3/4] bg-gray-200 rounded-lg shadow-md'></div>
+              <div className='w-full aspect-video lg:aspect-[3/4] bg-gray-200 rounded-lg shadow-md' style={{ backgroundImage: `url(${SecondStart})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
             </div>
 
             {/* Right Column */}
@@ -327,14 +338,14 @@ const LandingPage = () => {
 
               {/* CTA Section */}
               <div className='flex flex-col md:flex-row items-center gap-8 py-4'>
-                <button className='w-full md:w-auto flex justify-center gap-3 px-8 py-4 rounded-full border border-primary-btn-color items-center'>
+                <button className='w-full md:w-auto flex justify-center gap-3 px-8 py-4 rounded-full border border-primary-btn-color items-center' onClick={() => navigate("/about")}>
                   Know more <HiArrowRight />
                 </button>
                 <div className='flex items-center'>
                   <div className='w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary-btn-color'></div>
                   <div className='flex flex-col font-medium ml-5'>
                     <p>Need help?</p>
-                    <p>(808) 555-0111</p>
+                    <p>+91 9361327770</p>
                   </div>
                 </div>
               </div>
@@ -343,7 +354,7 @@ const LandingPage = () => {
 
           {/* Review Box and Infinity Scroll */}
           <div className='w-[92%] md:w-[90%] mx-auto mt-20'>
-            <ReviewBox />
+            {/* <ReviewBox /> */}
             <div className='mt-12'>
               <InfinityScroll />
             </div>
@@ -354,7 +365,7 @@ const LandingPage = () => {
 
       {/* services section starts here */}
       <section
-        className='w-full pb-10 md:pb-16 lg:pb-20 '
+        className='w-full'
         id='service'
       >
         <div className='w-[90%] md:w-[85%] lg:w-[80%] mx-auto'>
@@ -383,7 +394,7 @@ const LandingPage = () => {
       {/* services section ends here */}
 
       {/* project section starts here */}
-      <section id='project' className='w-full min-h-screen mt-20 md:mt-28 lg:mt-40'>
+      <section id='project' className='w-full min-h-screen mt-10 md:mt-18 lg:mt-30'>
         <div className='w-[90%] md:w-[85%] lg:w-[80%] mx-auto mt-[3%]'>
           <h1 className='text-4xl md:text-5xl lg:text-6xl font-primary font-bold bg-transparent bg-clip-text text-transparent leading-relaxed bg-gradient-to-b from-[#FFBB12] to-[#99700B]'>
             Previous Projects
@@ -395,7 +406,7 @@ const LandingPage = () => {
       </section>
 
       {/* career section starts here */}
-      <section id="career" className="w-full mt-30 px-5 md:px-0">
+      <section id="career" className="w-full px-5 md:px-0">
         <div className="w-[90%] flex flex-col md:flex-row justify-between items-center h-auto md:h-[500px] rounded-4xl bg-primary mx-auto px-5 md:px-[10%] py-10">
           <div className="w-full md:w-[50%] flex flex-col items-center md:items-start justify-center text-center md:text-left">
             <h1 className="text-3xl md:text-5xl font-primary font-bold mb-6 md:mb-10">
@@ -411,7 +422,7 @@ const LandingPage = () => {
               Contact us today and let’s build something amazing together!
             </p>
 
-            <button className="py-3 md:py-5 px-6 md:px-7 rounded-full bg-primary-btn-color font-secondary text-lg md:text-xl">
+            <button className="py-3 md:py-5 px-6 md:px-7 rounded-full bg-primary-btn-color font-secondary text-lg md:text-xl" onClick={() => navigate("/contact")}>
               Get your free proposal
             </button>
           </div>

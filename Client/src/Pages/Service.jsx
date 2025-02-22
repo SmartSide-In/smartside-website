@@ -144,7 +144,7 @@ const Service = () => {
       initial={{ opacity: 0, y:100 }}
       animate={{ opacity: 1, y:0 }}
       transition={{ duration: 0.5, delay:0.5 }} 
-      className='w-full min-h-[80vh] mt-8 md:mt-15 lg:mt-16 px-4 md:px-6' id='consultation'>
+      className='w-full min-h-[70vh] mt-8 md:mt-15 lg:mt-16 px-4 md:px-6' id='consultation'>
         <div className='w-full lg:w-[80%] mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 mt-20'>
           <div className='w-full lg:w-[40%] text-center lg:text-left'>
             <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold font-primary leading-tight lg:leading-[80px]'>
