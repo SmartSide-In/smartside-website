@@ -80,14 +80,14 @@ const LandingPage = () => {
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://smartside.com/" />
+        <meta property="og:url" content="https://smartside.in /" />
         <meta property="og:title" content="SmartSide - Where Innovation Gets Smarter | Web Development & AI Solutions" />
         <meta property="og:description" content="Transform your business with SmartSide's innovative digital solutions. Expertise in AI, cloud computing, web development, and DevOps. Get started today!" />
         <meta property="og:image" content="/path-to-your-og-image.jpg" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://smartside.com/" />
+        <meta property="twitter:url" content="https://smartside.in/" />
         <meta property="twitter:title" content="SmartSide - Where Innovation Gets Smarter | Web Development & AI Solutions" />
         <meta property="twitter:description" content="Transform your business with SmartSide's innovative digital solutions. Expertise in AI, cloud computing, web development, and DevOps. Get started today!" />
         <meta property="twitter:image" content="/path-to-your-og-image.jpg" />
@@ -100,7 +100,7 @@ const LandingPage = () => {
         <meta name="author" content="SmartSide" />
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://smartside.com/" />
+        <link rel="canonical" href="https://smartside.in/" />
 
         {/* Favicon */}
         <link rel="icon" type="image/png" href="/favicon.png" />
@@ -118,8 +118,8 @@ const LandingPage = () => {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "SmartSide",
-        "url": "https://smartside.com",
-        "logo": "https://smartside.com/logo.png",
+        "url": "https://smartside.in",
+        "logo": "https://smartside.in/logo.png",
         "description": "SmartSide combines innovation and technology to create powerful, future-ready solutions. Expertise in AI development, cloud computing, web development, and DevOps.",
         "address": {
           "@type": "PostalAddress",
@@ -136,7 +136,7 @@ const LandingPage = () => {
       </Helmet>
       <GotoTop />
       {/* home section starts here */}
-      <section className='w-full flex flex-col items-center'>
+      <section className='w-full flex flex-col items-center font-primary'>
         <Navbar />
         <motion.div
           initial={{ opacity: 0 }}
@@ -407,7 +407,7 @@ const LandingPage = () => {
 
       {/* career section starts here */}
       <section id="career" className="w-full px-5 md:px-0">
-        <div className="w-[90%] flex flex-col md:flex-row justify-between items-center h-auto md:h-[500px] rounded-4xl bg-primary mx-auto px-5 md:px-[10%] py-10">
+        <div className="w-[90%] flex flex-col md:flex-row justify-between mt-10 items-center h-auto md:h-[500px] rounded-4xl bg-primary mx-auto px-5 md:px-[10%] py-10">
           <div className="w-full md:w-[50%] flex flex-col items-center md:items-start justify-center text-center md:text-left">
             <h1 className="text-3xl md:text-5xl font-primary font-bold mb-6 md:mb-10">
               Let’s make things happen

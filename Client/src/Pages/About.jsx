@@ -20,8 +20,8 @@ const AboutSEO = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "SmartSide",
-    "url": "[Your-Website-URL]",
-    "logo": "[Your-Website-URL]/logo.png",
+    "url": "https://www.smartside.in",
+    "logo": "https://www.smartside.in/logo.png",
     "description": "SmartSide provides expert web development, AI solutions, and cloud services with 25 years of industry experience.",
     "foundingDate": "1999",
     "contactPoint": {
@@ -67,7 +67,7 @@ const AboutSEO = () => {
         property="og:description"
         content="Transform your business with SmartSide's expert web development, AI automation, and cloud solutions. 25+ years of experience, 100+ clients served, and award-winning services."
       />
-      <meta property="og:image" content="[Your-Website-URL]/assets/aboutbox.png" />
+      <meta property="og:image" content="https://www.smartside.in/assets/aboutbox.png" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
@@ -77,7 +77,7 @@ const AboutSEO = () => {
         property="twitter:description"
         content="Partner with SmartSide for cutting-edge web development, AI solutions, and cloud services. Trusted by 100+ clients with 10k+ completed projects."
       />
-      <meta property="twitter:image" content="[Your-Website-URL]/assets/aboutbox.png" />
+      <meta property="twitter:image" content="https://www.smartside.in/assets/aboutbox.png" />
 
       {/* Additional SEO Meta Tags */}
       <meta

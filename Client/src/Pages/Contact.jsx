@@ -153,8 +153,8 @@ const Contact = () => {
           content="Get in touch with SmartSide. Request a call, send an email, or apply to join our team."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.smartside.com/contact" />
-        <meta property="og:image" content="https://www.smartside.com/icon.png" />
+        <meta property="og:url" content="https://www.smartside.in/contact" />
+        <meta property="og:image" content="https://www.smartside.in/icon.png" />
         <meta property="og:site_name" content="SmartSide" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact Us - SmartSide" />
@@ -162,7 +162,7 @@ const Contact = () => {
           name="twitter:description"
           content="Get in touch with SmartSide. Request a call, send an email, or apply to join our team."
         />
-        <meta name="twitter:image" content="https://www.smartside.com/icon.png" />
+        <meta name="twitter:image" content="https://www.smartside.in/icon.png" />
       </Helmet>
 
       <div className="w-full flex items-center justify-center">
@@ -188,7 +188,7 @@ const Contact = () => {
             <IoIosMail size={40} className="text-primary-btn-color" />
             <span>
               <p className="font-header text-gray-400">E-mail:</p>
-              <p className="font-header font-semibold mt-2">support@smartside.com</p>
+              <p className="font-header font-semibold mt-2">support@smartside.in</p>
             </span>
           </div>
         </div>

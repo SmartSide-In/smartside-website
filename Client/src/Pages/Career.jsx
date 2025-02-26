@@ -18,7 +18,7 @@ const CareersSEO = () => {
       "hiringOrganization": {
         "@type": "Organization",
         "name": "SmartSide",
-        "sameAs": "[Your-Website-URL]"
+        "sameAs": "https://smartside.in"
       },
       "jobLocation": {
         "@type": "Place",
@@ -38,7 +38,7 @@ const CareersSEO = () => {
       "hiringOrganization": {
         "@type": "Organization",
         "name": "SmartSide",
-        "sameAs": "[Your-Website-URL]"
+        "sameAs": "https://smartside.in"
       },
       "jobLocation": {
         "@type": "Place",
@@ -58,7 +58,7 @@ const CareersSEO = () => {
       "hiringOrganization": {
         "@type": "Organization",
         "name": "SmartSide",
-        "sameAs": "[Your-Website-URL]"
+        "sameAs": "https://smartside.in"
       },
       "jobLocation": {
         "@type": "Place",
@@ -102,7 +102,7 @@ const CareersSEO = () => {
         property="og:description"
         content="Looking for an exciting career in tech? Join SmartSide and work with cutting-edge technologies. Competitive benefits, professional growth, and work-life balance await."
       />
-      <meta property="og:image" content="[Your-Website-URL]/assets/competative.png" />
+      <meta property="og:image" content="https://smartside.in/assets/competative.png" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
@@ -115,7 +115,7 @@ const CareersSEO = () => {
         property="twitter:description"
         content="Launch your career at SmartSide. We're hiring for various roles including Relationship Manager, Risk Analyst, and IT Security Specialist. Great benefits and growth opportunities!"
       />
-      <meta property="twitter:image" content="[Your-Website-URL]/assets/competative.png" />
+      <meta property="twitter:image" content="https://smartside.in/assets/competative.png" />
 
       {/* Additional SEO Meta Tags */}
       <meta

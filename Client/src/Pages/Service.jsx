@@ -58,7 +58,7 @@ const ServicesSEO = () => {
     "provider": {
       "@type": "Organization",
       "name": "SmartSide",
-      "url": "[Your-Website-URL]"
+      "url": "https://www.smartside.in"
     },
     "offers": {
       "@type": "AggregateOffer",
@@ -98,7 +98,7 @@ const ServicesSEO = () => {
         property="og:description"
         content="Explore our range of digital services: Web Development, E-commerce Solutions, AI Integration, DevOps, Cloud Computing, and UI/UX Design. Start your digital transformation journey today."
       />
-      <meta property="og:image" content="[Your-Website-URL]/assets/annon.png" />
+      <meta property="og:image" content="https://www.smartside.in/assets/annon.png" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
@@ -111,7 +111,7 @@ const ServicesSEO = () => {
         property="twitter:description"
         content="Comprehensive digital services for modern businesses. Web development, e-commerce, AI, cloud solutions, and more. Transform your business with SmartSide."
       />
-      <meta property="twitter:image" content="[Your-Website-URL]/assets/annon.png" />
+      <meta property="twitter:image" content="https://www.smartside.in/assets/annon.png" />
 
       {/* Additional SEO Meta Tags */}
       <meta

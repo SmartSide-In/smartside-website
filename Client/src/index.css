@@ -9,16 +9,14 @@
   --color-primary-btn-color: #FFBB12;
   --color-primary:#ECECEC;
 }
-@font-face{
+@font-face {
   font-family: "DIN Alternate Bold";
-  font-size: normal;
-  font-weight:200 700;
-  src:url('src/fonts/DIN Alternate Bold.otf') format('opentype');
+  src: url('/fonts/DIN Alternate Bold.otf') format('opentype');
 }
-@font-face{
+
+@font-face {
   font-family: "MrEavesXLModOT-Reg";
-  font-size: normal;
-  src:url('src/fonts/MrEavesXLModOT-Reg.ttf') format('truetype');
+  src: url('/fonts/MrEavesXLModOT-Reg.ttf') format('truetype');
 }
 
 button{
